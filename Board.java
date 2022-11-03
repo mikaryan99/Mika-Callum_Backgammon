@@ -23,7 +23,8 @@ public class Board {
 			}
 		}*/
 
-			for (int i = 2;i<=7;i++){
+			//initial positions
+				for (int i = 2;i<=7;i++){
 					set[i][2] = "x";
 				}
 				for (int i = 2;i<=4;i++){
@@ -36,18 +37,20 @@ public class Board {
 					set[i][15] = "x";
 				}
 				//lower half
-				for (int i = 22;i>=17;i--){
+				for (int i = 21;i>=17;i--){
 					set[i][2] = "o";
 				}
-				for (int i = 22;i>=20;i--){
+				for (int i = 21;i>=19;i--){
 					set[i][5] = "x";
 				}
-				for (int i = 22;i>=17;i--){
+				for (int i = 21;i>=17;i--){
 					set[i][10] = "x";
 				}
-				for (int i = 22;i>=20;i--){
+				for (int i = 21;i>=20;i--){
 					set[i][15] = "o";
 				}
+				
+				
 
 		for(int y = 1; y< MatrixY-1; y++) {
 			set[y][0]  = "|";
