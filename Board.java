@@ -24,13 +24,13 @@ public class Board {
 		}*/
 
 			//initial positions
-				for (int i = 2;i<=7;i++){
+				for (int i = 2;i<=6;i++){
 					set[i][2] = "x";
 				}
 				for (int i = 2;i<=4;i++){
 					set[i][5] = "o";
 				}
-				for (int i = 2;i<=7;i++){
+				for (int i = 2;i<=6;i++){
 					set[i][10] = "o";
 				}
 				for (int i = 2;i<=3;i++){
