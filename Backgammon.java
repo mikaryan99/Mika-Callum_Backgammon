@@ -13,7 +13,7 @@ public class Backgammon {
 		Dice dice = new Dice();
 
 		//Test Area
-		checkers.findCheckers();
+		//checkers.findCheckers();
 		//*************
 
 		int playerA, playerB;
@@ -38,17 +38,25 @@ public class Backgammon {
 
 
 		do {
-
+			System.out.print("Current Player: " + users[playerA].toString() + "\n");
 			board.printBoard(playerA);
 			input1 = view.getCommand(users[playerA]);
+			if("pip".equalsIgnoreCase(input1)) {
+				checkers.getPipCount();
+			}
 			if("r".equalsIgnoreCase(input1)) {
 				roll1 = dice.getRoll();
 				roll2 = dice.getRoll();
 				System.out.print(users[playerA] + " rolled " + roll1 + " and " + roll2 + "\n");
 			}
-
+			
+			
+			System.out.print("Current Player: " + users[playerB].toString() + "\n");
 			board.printBoard(playerB);
 			input2 = view.getCommand(users[playerB]);
+			if("pip".equalsIgnoreCase(input2)) {
+				checkers.getPipCount();
+			}
 			if("r".equalsIgnoreCase(input2)) {
 				roll1 = dice.getRoll();
 				roll2 = dice.getRoll();

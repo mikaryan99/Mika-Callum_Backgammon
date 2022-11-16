@@ -1,5 +1,7 @@
 package Backgammon;
 
+import java.util.Arrays;
+
 public class Checkers {
 	private int MatrixX = 19, MatrixY = 24;
 	private Board board;
@@ -10,7 +12,7 @@ public class Checkers {
 		
 		//initial positions
 		for (int i = 2;i<=6;i++){
-			board.getSet()[i][2] = "x";
+			board.getSet()[i][1] = "x";
 		}
 		for (int i = 2;i<=4;i++){
 			board.getSet()[i][5] = "o";
@@ -23,7 +25,7 @@ public class Checkers {
 		}
 		//lower half
 		for (int i = 21;i>=17;i--){
-			board.getSet()[i][2] = "o";
+			board.getSet()[i][1] = "o";
 		}
 		for (int i = 21;i>=19;i--){
 			board.getSet()[i][5] = "x";
@@ -36,18 +38,72 @@ public class Checkers {
 		}
 	}
 	
-	public void findCheckers() {
+	public void getPipCount() {
 		//find X
-		for(int y=0; y < MatrixY; y++) {
+
+		int countT = 0;
+		int countB = 0;
+		
+		for(int y=0; y < MatrixY/2; y++) {
 		    for(int i=0; i < MatrixX; i++) {
 				if(board.getSet()[y][i] == "x") {
-					//int flag=0;
-					System.out.print( i + "\n"); //board.getSet()[y][i]
+					if (i<9) {
+						countT=countT+(12+i);
+					}
+					if (i>9) {
+						countT=countT+(9+i);
+					}
 				}
 			}
 		}
-		//find Y
 		
+		for(int y=MatrixY/2; y < MatrixY; y++) {
+		    for(int i=0; i < MatrixX; i++) {
+				if(board.getSet()[y][i] == "x") {
+					if (i<9) {
+						countB=countB+(13-i);
+					}
+					if (i>9) {
+						countB=countB+(16-i);
+					}
+				}
+			}
+		}
+		int Totalx = countT+countB;
+		
+		// Find o
+		int countT1 = 0;
+		int countB1 = 0;
+		
+		for(int y=0; y < MatrixY/2; y++) {
+		    for(int i=0; i < MatrixX; i++) {
+				if(board.getSet()[y][i] == "o") {
+					if (i<9) {
+						countT1=countT1+(13-i);
+					}
+					if (i>9) {
+						countT1=countT1+(16-i);
+					}
+				}
+			}
+		}
+		
+		for(int y=MatrixY/2; y < MatrixY; y++) {
+		    for(int i=0; i < MatrixX; i++) {
+				if(board.getSet()[y][i] == "o") {
+					if (i<9) {
+						countB1=countB1+(12+i);
+					}
+					if (i>9) {
+						countB1=countB1+(9+i);
+					}
+				}
+			}
+		}
+		int Totalo = countT1+countB1;
+		System.out.print("x pip count: " + Totalx + "\n");
+		System.out.print("o pip count: " + Totalo + "\n");
+
 	}
 
 	public void legalMoves() {
