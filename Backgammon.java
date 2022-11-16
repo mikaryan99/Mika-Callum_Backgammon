@@ -38,8 +38,11 @@ public class Backgammon {
 
 
 		do {
+			
+			///////////////////////////////////////////////////
 			System.out.print("Current Player: " + users[playerA].toString() + "\n");
 			board.printBoard(playerA);
+			do {
 			input1 = view.getCommand(users[playerA]);
 			if("pip".equalsIgnoreCase(input1)) {
 				checkers.getPipCount();
@@ -49,10 +52,22 @@ public class Backgammon {
 				roll2 = dice.getRoll();
 				System.out.print(users[playerA] + " rolled " + roll1 + " and " + roll2 + "\n");
 			}
+			if("Q".equalsIgnoreCase(input1)) {
+				users[playerA].EndGame();
+			}
+			if(!"r".equalsIgnoreCase(input1) && !"Q".equalsIgnoreCase(input1) && !"pip".equalsIgnoreCase(input1) && !"Q".equalsIgnoreCase(input1)) {
+				System.out.print("Invalid Command, Try again\n");
+			}
+			}
+			
+			while(!"r".equalsIgnoreCase(input1) && !"Q".equalsIgnoreCase(input1));
+			
+			/////////////////////////////////////////////////////
 			
 			
 			System.out.print("Current Player: " + users[playerB].toString() + "\n");
 			board.printBoard(playerB);
+			do {
 			input2 = view.getCommand(users[playerB]);
 			if("pip".equalsIgnoreCase(input2)) {
 				checkers.getPipCount();
@@ -62,9 +77,18 @@ public class Backgammon {
 				roll2 = dice.getRoll();
 				System.out.println(users[playerB] + " rolled " + roll1 + " and " + roll2 + "\n");
 			}
+			if("Q".equalsIgnoreCase(input2)) {
+				users[playerB].EndGame();
+			}
+			if(!"r".equalsIgnoreCase(input2) && !"Q".equalsIgnoreCase(input2) && !"pip".equalsIgnoreCase(input2) && !"Q".equalsIgnoreCase(input2)) {
+				System.out.print("Invalid Command, Try again\n");
+			}
+			}
+			while(!"r".equalsIgnoreCase(input2) && !"Q".equalsIgnoreCase(input2));
+			///////////////////////////////////////////////////////////////
 
 		}
-		while(!"Q".equalsIgnoreCase(input1) && !"Q".equalsIgnoreCase(input2));
+		while(!users[playerA].isGameOver() && !users[playerB].isGameOver());
 
 		System.out.println("Game Over!");
 	}
