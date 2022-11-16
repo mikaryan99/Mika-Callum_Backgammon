@@ -17,40 +17,6 @@ public class Board {
 				  }
 				}
 
-		/*for(int x = 0;x<=MatrixX; x +=7) {
-			for(int y = 0; y<MatrixY; y++) {
-				set[y][x] = "|";
-			}
-		}*/
-
-			//initial positions
-				for (int i = 2;i<=6;i++){
-					set[i][2] = "x";
-				}
-				for (int i = 2;i<=4;i++){
-					set[i][5] = "o";
-				}
-				for (int i = 2;i<=6;i++){
-					set[i][10] = "o";
-				}
-				for (int i = 2;i<=3;i++){
-					set[i][15] = "x";
-				}
-				//lower half
-				for (int i = 21;i>=17;i--){
-					set[i][2] = "o";
-				}
-				for (int i = 21;i>=19;i--){
-					set[i][5] = "x";
-				}
-				for (int i = 21;i>=17;i--){
-					set[i][10] = "x";
-				}
-				for (int i = 21;i>=20;i--){
-					set[i][15] = "o";
-				}
-				
-				
 
 		for(int y = 1; y< MatrixY-1; y++) {
 			set[y][0]  = "|";
@@ -60,13 +26,12 @@ public class Board {
 			set[y][18] = "|";
 		}
 
-		//for(int y = 0;y<=MatrixY; y +=MatrixY-1) {
 			for(int x = 0; x<MatrixX; x++) {
 				set[1][x] = "-";
 				set[MatrixY-2][x] = "-";
 			}
-		//}
 	}
+
 
 	public void printBoard(int turn) {
 
@@ -118,9 +83,14 @@ public class Board {
 
 	}
 
+	public String[][] getSet() {
+		return set;
+	}
+
+
 	/*public void intoBoard(String[][] in) {
 		set[][]
 	}*/
 
 
-}   
+}

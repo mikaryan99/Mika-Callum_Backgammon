@@ -9,7 +9,12 @@ public class Backgammon {
 		users[0] = new User(view.getName());
 		users[1] = new User(view.getName());
 		Board board = new Board(users);
+		Checkers checkers = new Checkers(board);
 		Dice dice = new Dice();
+
+		//Test Area
+		checkers.findCheckers();
+		//*************
 
 		int playerA, playerB;
 
