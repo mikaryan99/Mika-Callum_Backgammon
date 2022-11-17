@@ -12,8 +12,10 @@ public class Backgammon {
 		Checkers checkers = new Checkers(board);
 		Dice dice = new Dice();
 
+
 		//Test Area
-		//checkers.findCheckers();
+		Move move = new Move();
+
 		//*************
 
 		int playerA, playerB;
@@ -38,15 +40,24 @@ public class Backgammon {
 
 
 		do {
-			
+
 			///////////////////////////////////////////////////
 			System.out.print("Current Player: " + users[playerA].toString() + "\n");
 			board.printBoard(playerA);
 			do {
 			input1 = view.getCommand(users[playerA]);
+
 			if("pip".equalsIgnoreCase(input1)) {
 				checkers.getPipCount();
+				checkers.duplicates(0);
 			}
+			//TEST SPACE ************************************8
+			if("hint".equalsIgnoreCase(input1)) {
+				int choice = view.getInt(users[playerA]);
+				boolean found = board.correctPosition(choice,checkers.positions(0));
+				move.legalMoves(checkers.duplicates(0),choice , found, roll1, roll2);
+			}
+            //*************************************************8
 			if("r".equalsIgnoreCase(input1)) {
 				roll1 = dice.getRoll();
 				roll2 = dice.getRoll();
@@ -59,18 +70,19 @@ public class Backgammon {
 				System.out.print("Invalid Command, Try again\n");
 			}
 			}
-			
+
 			while(!"r".equalsIgnoreCase(input1) && !"Q".equalsIgnoreCase(input1));
-			
+
 			/////////////////////////////////////////////////////
-			
-			
+
+
 			System.out.print("Current Player: " + users[playerB].toString() + "\n");
 			board.printBoard(playerB);
 			do {
 			input2 = view.getCommand(users[playerB]);
 			if("pip".equalsIgnoreCase(input2)) {
 				checkers.getPipCount();
+				checkers.duplicates(1);
 			}
 			if("r".equalsIgnoreCase(input2)) {
 				roll1 = dice.getRoll();

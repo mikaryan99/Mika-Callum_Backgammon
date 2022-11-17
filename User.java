@@ -15,7 +15,7 @@ public class User {
 	public Boolean isGameOver() {
 		return X;
 	}
-	
+
 	public void EndGame() {
 		X = true;
 	}
@@ -31,6 +31,6 @@ public class User {
 	public String toString () {
 		return name;
 	}
-	
+
 
 }

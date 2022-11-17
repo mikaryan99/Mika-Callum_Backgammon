@@ -87,6 +87,19 @@ public class Board {
 		return set;
 	}
 
+	public boolean correctPosition(int choice, int[] positions) {
+		boolean found = false;
+		for (int i : positions) {
+			//System.out.print(i + "This should be positions \n");
+			if (choice == i) {
+				//System.out.print("Choice is found" + choice);
+				found = true;
+			}
+		}
+		// BUGGING System.out.print(found);
+		return found;
+	}
+
 
 	/*public void intoBoard(String[][] in) {
 		set[][]
