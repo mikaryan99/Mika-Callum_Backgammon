@@ -49,14 +49,14 @@ public class Backgammon {
 
 			if("pip".equalsIgnoreCase(input1)) {
 				checkers.getPipCount();
-				checkers.duplicates(0);
+				//checkers.duplicates(0);
 			}
 			//TEST SPACE ************************************8
-			if("hint".equalsIgnoreCase(input1)) {
-				int choice = view.getInt(users[playerA]);
-				boolean found = board.correctPosition(choice,checkers.positions(0));
-				move.legalMoves(checkers.duplicates(0),choice , found, roll1, roll2);
-			}
+			//if("hint".equalsIgnoreCase(input1)) {
+				//int choice = view.getInt(users[playerA]);
+				//boolean found = board.correctPosition(choice,checkers.positions(0));
+				//move.legalMoves(checkers.duplicates(0),choice , found, roll1, roll2);
+			//}
             //*************************************************8
 			if("r".equalsIgnoreCase(input1)) {
 				roll1 = dice.getRoll();
@@ -66,7 +66,12 @@ public class Backgammon {
 			if("Q".equalsIgnoreCase(input1)) {
 				users[playerA].EndGame();
 			}
-			if(!"r".equalsIgnoreCase(input1) && !"Q".equalsIgnoreCase(input1) && !"pip".equalsIgnoreCase(input1) && !"Q".equalsIgnoreCase(input1)) {
+			if("hint".equalsIgnoreCase(input1)) {
+				System.out.print("To show pip count of both players enter: pip \n");
+				System.out.print("To quit the game enter: Q \n");
+				System.out.print("To roll dice enter: r \n");
+			}
+			if(!"r".equalsIgnoreCase(input1) && !"Q".equalsIgnoreCase(input1) && !"pip".equalsIgnoreCase(input1) && !"Q".equalsIgnoreCase(input1) && !"hint".equalsIgnoreCase(input1)) {
 				System.out.print("Invalid Command, Try again\n");
 			}
 			}
@@ -82,7 +87,7 @@ public class Backgammon {
 			input2 = view.getCommand(users[playerB]);
 			if("pip".equalsIgnoreCase(input2)) {
 				checkers.getPipCount();
-				checkers.duplicates(1);
+				//checkers.duplicates(1);
 			}
 			if("r".equalsIgnoreCase(input2)) {
 				roll1 = dice.getRoll();
@@ -92,8 +97,13 @@ public class Backgammon {
 			if("Q".equalsIgnoreCase(input2)) {
 				users[playerB].EndGame();
 			}
-			if(!"r".equalsIgnoreCase(input2) && !"Q".equalsIgnoreCase(input2) && !"pip".equalsIgnoreCase(input2) && !"Q".equalsIgnoreCase(input2)) {
+			if(!"r".equalsIgnoreCase(input2) && !"Q".equalsIgnoreCase(input2) && !"pip".equalsIgnoreCase(input2) && !"Q".equalsIgnoreCase(input2) && !"hint".equalsIgnoreCase(input2)) {
 				System.out.print("Invalid Command, Try again\n");
+			}
+			if("hint".equalsIgnoreCase(input2)) {
+				System.out.print("To show pip count of both players enter: pip \n");
+				System.out.print("To quit the game enter: Q \n");
+				System.out.print("To roll dice enter: r \n");
 			}
 			}
 			while(!"r".equalsIgnoreCase(input2) && !"Q".equalsIgnoreCase(input2));
