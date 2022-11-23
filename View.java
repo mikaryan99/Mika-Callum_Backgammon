@@ -30,6 +30,17 @@ public class View {
 		return number;
 
 	}
+	
+	public String getABC(User user) {
+		System.out.print(user + " enter A B or C: ");
+		in.nextLine();
+		String ABC = in.nextLine();
+		// if not int give error
+		return ABC;
+
+	}
+	
+
 
 
 }
