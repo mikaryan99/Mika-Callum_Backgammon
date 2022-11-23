@@ -35,7 +35,7 @@ public class Board {
 
 	public void printBoard(int turn) {
 
-		if(turn == 1) {
+		if(turn == 0) {
 			for(int i = 13, x = 1; i<=24; i++, x++) {
 				 String s = Integer.toString(i);
 				 if(x==7 | x==8 | x==9) {

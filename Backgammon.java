@@ -48,8 +48,9 @@ public class Backgammon {
 			input1 = view.getCommand(users[playerA]);
 
 			if("pip".equalsIgnoreCase(input1)) {
+				checkers.UpdatePos();
 				checkers.getPipCount();
-				//checkers.duplicates(0);
+				checkers.duplicates(0);
 			}
 			//TEST SPACE ************************************8
 			//if("hint".equalsIgnoreCase(input1)) {
@@ -126,6 +127,7 @@ public class Backgammon {
 			do {
 			input2 = view.getCommand(users[playerB]);
 			if("pip".equalsIgnoreCase(input2)) {
+				checkers.UpdatePos();
 				checkers.getPipCount();
 				//checkers.duplicates(1);
 			}

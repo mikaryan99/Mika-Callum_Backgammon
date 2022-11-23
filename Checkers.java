@@ -7,8 +7,14 @@ public class Checkers {
 	private int MatrixX = 19, MatrixY = 24;
 	private Board board;
 	private ArrayList<Integer> Xcheckers = new ArrayList<Integer>();
+	private ArrayList<Integer> OintermsX = new ArrayList<Integer>();
+
 	private ArrayList<Integer> Ocheckers = new ArrayList<Integer>();
-	private ArrayList<Integer> douplicates = new ArrayList<Integer>();
+	private ArrayList<Integer> XintermsO = new ArrayList<Integer>();
+
+	private int[] displayX = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24};
+	private int[] displayO = {24, 23,22, 21, 20, 19, 18, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1};
+	private int[] matrix =  {15, 14, 13, 12, 11, 10, 6, 5, 4, 3, 2, 1, 1, 2, 3, 4, 5, 6, 10, 11, 12, 13, 14, 15};
 
 	Checkers(Board board){
 		this.board = board;
@@ -42,87 +48,59 @@ public class Checkers {
 		}
 	}
 
-	public void getPipCount() {
-		//find X
 
-		//countT = top of board countB = bottom of board
-		int countT = 0;
-		int countB = 0;
-
-		// The count method for X could be wrong
-		// X and O will swap
+	public void UpdatePos() {
+		//TOP HALF
 		for(int y=0; y < MatrixY/2; y++) {
-		    for(int i=0; i < MatrixX; i++) {
-				if(board.getSet()[y][i] == "x") {
-					if (i<9) {
-						countT=countT+(12+i);
-						Xcheckers.add(12+i);
-					}
-					if (i>9) {
-						countT=countT+(9+i);
-						Xcheckers.add(9+i);
-					}
+		    for(int i=matrix.length/2; i < matrix.length; i++) {
+		    	int x = matrix[i];
+		    	int Xdisplayi = displayX[i];
+		    	int Odisplayi = displayO[i];
+				if(board.getSet()[y][x] == "x") {
+						Xcheckers.add(Xdisplayi);
+						XintermsO.add(Odisplayi);
 				}
+				if(board.getSet()[y][x] == "o") {
+					Ocheckers.add(Odisplayi);
+					OintermsX.add(Xdisplayi);
+			    }
 			}
 		}
-
+		//BOTTOM HALF
 		for(int y=MatrixY/2; y < MatrixY; y++) {
-		    for(int i=0, j = 13, k = -16; i < MatrixX; i++, j--, k = k+2) {
-				if(board.getSet()[y][i] == "x") {
-					if (i<9) {
-						countB=countB+(13-i);
-						Xcheckers.add(j);
+		    for(int i=0; i < matrix.length/2; i++) {
+		    	int x = matrix[i];
+		    	int Xdisplayi = displayX[i];
+		    	int Odisplayi = displayO[i];
+		    	if(board.getSet()[y][x] == "x") {
+					Xcheckers.add(Xdisplayi);
+					XintermsO.add(Odisplayi);
 					}
-					if (i>9) {
-						countB=countB+(16-i);
-						Xcheckers.add(i-k);
-					}
-				}
+		    	if(board.getSet()[y][x] == "o") {
+		    		Ocheckers.add(Odisplayi);
+		    		OintermsX.add(Xdisplayi);
+		    		}
 			}
 		}
-		int Totalx = countT+countB;
-
-		// Find o
-		int countT1 = 0;
-		int countB1 = 0;
-
-		for(int y=0; y < MatrixY/2; y++) {
-		    for(int i=0; i < MatrixX; i++) {
-				if(board.getSet()[y][i] == "o") {
-					if (i<9) {
-						countT1=countT1+(13-i);
-						Ocheckers.add(12+i);
-					}
-					if (i>9) {
-						countT1=countT1+(16-i);
-						Ocheckers.add(9+i);
-					}
-				}
-			}
-		}
-
-		for(int y=MatrixY/2; y < MatrixY; y++) {
-		    for(int i=0; i < MatrixX; i++) {
-				if(board.getSet()[y][i] == "o") {
-					if (i<9) {
-						countB1=countB1+(12+i); // correct
-						Ocheckers.add(13-i);
-					}
-					if (i>9) {
-						countB1=countB1+(9+i);
-						Ocheckers.add(16-i);
-					}
-				}
-			}
-		}
-		int Totalo = countT1+countB1;
-		System.out.print("x pip count: " + Totalx + "\n"); //******************************
-		System.out.print("o pip count: " + Totalo + "\n");
-		System.out.println("x checkers pos = " + Xcheckers + "\n");
-		System.out.println("o checkers pos = " + Ocheckers + "\n");
-
-
+		System.out.print("O = " + OintermsX + "\n");
+		System.out.print("X = " + XintermsO + "\n");
 	}
+
+
+	public void getPipCount() {
+
+		int TotalO=0, TotalX=0;
+		for(int i = 0; i<Xcheckers.size();i++) {
+			TotalX = TotalX + Xcheckers.get(i);
+		}
+		for(int i = 0; i<Ocheckers.size();i++) {
+			TotalO = TotalO + Ocheckers.get(i);
+		}
+
+		System.out.print("x pip count: " + TotalX + "\n"); //******************************
+		System.out.print("o pip count: " + TotalO + "\n");
+	}
+
 
 	// returns an int array containing pips where THE CURRENT PLAYER's checkers are present
 	public int[] positions(int turn) {
@@ -130,10 +108,10 @@ public class Checkers {
 		ArrayList<Integer> TEST = new ArrayList<Integer>();
 
 		if(turn == 0) {
-			 TEST = Xcheckers;
+			 TEST = Ocheckers;
 		}
 		else {
-			TEST = Ocheckers;
+			TEST = Xcheckers;
 		}
 
 		Set<Integer> pos = new HashSet<Integer>();
@@ -163,10 +141,10 @@ public class Checkers {
 		ArrayList<Integer> TEST = new ArrayList<Integer>();
 
 		if(turn == 0) {
-			 TEST = Ocheckers;
+			 TEST = XintermsO;
 		}
 		else {
-			TEST = Xcheckers;
+			TEST = OintermsX;
 		}
 
 		Set<Integer> positions = new HashSet<Integer>();
@@ -185,9 +163,8 @@ public class Checkers {
 	    int intduplicates[] = new int[objduplicates.length];
 	    for(int i=0; i<objduplicates.length; i++){
 	         intduplicates[i] = (int) objduplicates[i];
-	         //System.out.println(intduplicates[i]);
+	         System.out.println(intduplicates[i]);
 	      }
-	  //  System.arraycopy(objduplicates, 0, intduplicates, 0, objduplicates.length);
 
 		return intduplicates;
 
