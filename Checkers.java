@@ -183,22 +183,21 @@ public class Checkers {
 
 	}
 
-	/*public int[] topchecker(int choice){
+	public int[] topchecker(int choice){
 		int xco,yco = 0;
 		xco = matrix[choice-1];
 
-		for(int i =2; i<MatrixY/2; i++) {
-			System.out.print("xco =" + xco);
-			System.out.print("yco = " + board.getSet()[i][xco]);
-			if(!(board.getSet()[i][xco]).equals("x")) {
-				yco = i-1;
+		for(int i =0; i<MatrixY/2; i++) {
+
+			if(" ".equals(board.getSet()[i][xco])) {
+				yco = i-1;                              //System.out.print("xco =" + xco + "\n");
+				break;                                  //System.out.print("yco = " + board.getSet()[i][xco]);
 			}
 		}
 		int[] coordinates = {yco,xco};
-		System.out.print(coordinates[0]);
-		System.out.print(coordinates[1]);
+
 		return coordinates;
-	}*/
+	}
 
 
 
