@@ -42,13 +42,14 @@ public class Backgammon {
 		do {
 
 			///////////////////////////////////////////////////
+			checkers.UpdatePos();
+
 			System.out.print("Current Player: " + users[playerA].toString() + "\n");
 			board.printBoard(playerA);
 			do {
 			input1 = view.getCommand(users[playerA]);
 
 			if("pip".equalsIgnoreCase(input1)) {
-				checkers.UpdatePos();
 				checkers.getPipCount();
 				checkers.duplicates(0);
 			}
@@ -63,47 +64,27 @@ public class Backgammon {
 				roll1 = dice.getRoll();
 				roll2 = dice.getRoll();
 				System.out.print(users[playerA] + " rolled " + roll1 + " and " + roll2 + "\n");
-				
-				
+
+
 				//////////////////////////*************************///////////////////////////////////
-				
+
 				checkers.getPipCount();
 				checkers.duplicates(0);
 				int choice = view.getInt(users[playerA]);
 				boolean found = board.correctPosition(choice,checkers.positions(0));
 				move.legalMoves(checkers.duplicates(0),choice , found, roll1, roll2);
-				String ABC1 = view.getABC(users[playerA]);
+				//checkers.topchecker(choice);
+				//String ABC1 = view.getABC(users[playerA]);
 
-				
-				if("A".equalsIgnoreCase(ABC1)) {
-					System.out.print("A was selected\n");
-					//make move A
-					//update checkers
-					//get another integer
-					//make move (only one option using second dice)
-					//update checkers
-				}
-				if("B".equalsIgnoreCase(ABC1)) {
-					System.out.print("B was selected\n");
-						//make move B
-						//update checkers
-						//get another integer
-						//make move (only one option using first dice)
-						//update checkers
-				}
-				if("C".equalsIgnoreCase(ABC1)) {
-					System.out.print("C was selected\n");
-							//make move C
-							//update checkers
-							//break
-				}
+
+
 				}
 
-				
+
 				//////////////////////////*************************///////////////////////////////////
 			System.out.print("\n");
-				
-			
+
+
 			if("Q".equalsIgnoreCase(input1)) {
 				users[playerA].EndGame();
 			}
@@ -125,9 +106,10 @@ public class Backgammon {
 			System.out.print("Current Player: " + users[playerB].toString() + "\n");
 			board.printBoard(playerB);
 			do {
+				checkers.UpdatePos();
+
 			input2 = view.getCommand(users[playerB]);
 			if("pip".equalsIgnoreCase(input2)) {
-				checkers.UpdatePos();
 				checkers.getPipCount();
 				//checkers.duplicates(1);
 			}
