@@ -183,26 +183,35 @@ public class Checkers {
 
 	}
 
-	public int[] topchecker(int choice){
+	public int[] topchecker(int choice, int player){
 		int xco,yco = 0;
 		xco = matrix[choice-1];
 
+		if((player == 0 && choice<13) || (player != 0 && choice>12)) {
 		for(int i =0; i<MatrixY/2; i++) {
 
 			if(" ".equals(board.getSet()[i][xco])) {
 				yco = i-1;                              //System.out.print("xco =" + xco + "\n");
 				break;                                  //System.out.print("yco = " + board.getSet()[i][xco]);
 			}
+		  }
 		}
+		else {
+		for(int i = MatrixY-1; i>MatrixY/2; i--) {
+
+			if(" ".equals(board.getSet()[i][xco])) {
+				yco = i+1;                              //System.out.print("xco =" + xco + "\n");
+				break;                                  //System.out.print("yco = " + board.getSet()[i][xco]);
+			}
+		  }
+		}
+
 		int[] coordinates = {yco,xco};
+		System.out.print("yco = " + yco + "\n");
+		System.out.print("xco = " + xco + "\n");
 
 		return coordinates;
 	}
 
 
-
-	public void legalMoves() {
-
-
-	}
 }

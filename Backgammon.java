@@ -45,7 +45,7 @@ public class Backgammon {
 			checkers.UpdatePos();
 
 			System.out.print("Current Player: " + users[playerA].toString() + "\n");
-			board.printBoard(playerA);
+			board.printBoard(0);
 			do {
 			input1 = view.getCommand(users[playerA]);
 
@@ -73,7 +73,7 @@ public class Backgammon {
 				int choice = view.getInt(users[playerA]);
 				boolean found = board.correctPosition(choice,checkers.positions(0));
 				move.legalMoves(checkers.duplicates(0),choice , found, roll1, roll2);
-				//checkers.topchecker(choice);
+				checkers.topchecker(choice, playerA);
 				//String ABC1 = view.getABC(users[playerA]);
 
 
@@ -104,7 +104,7 @@ public class Backgammon {
 
 
 			System.out.print("Current Player: " + users[playerB].toString() + "\n");
-			board.printBoard(playerB);
+			board.printBoard(1);
 			do {
 				checkers.UpdatePos();
 
