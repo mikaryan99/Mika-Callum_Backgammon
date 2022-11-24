@@ -101,9 +101,5 @@ public class Board {
 	}
 
 
-	/*public void intoBoard(String[][] in) {
-		set[][]
-	}*/
-
 
 }
