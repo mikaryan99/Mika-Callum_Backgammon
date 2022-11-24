@@ -199,7 +199,7 @@ public class Checkers {
 		  }
 		}
 		else {
-		for(int i = MatrixY-1; i>MatrixY/2; i--) {
+		for(int i = MatrixY-2; i>MatrixY/2; i--) {
 
 			if(" ".equals(board.getSet()[i][xco])) {
 				yco = i+1;
