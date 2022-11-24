@@ -1,4 +1,5 @@
 package Backgammon;
+import java.util.Scanner;
 
 
 public class Backgammon {
@@ -11,8 +12,7 @@ public class Backgammon {
 		Board board = new Board(users);
 		Checkers checkers = new Checkers(board);
 		Dice dice = new Dice();
-
-
+		
 		//Test Area
 		Move move = new Move(board);
 
@@ -68,17 +68,63 @@ public class Backgammon {
 
 				//////////////////////////*************************///////////////////////////////////
 
-				checkers.getPipCount();
+				//checkers.getPipCount();
 				checkers.duplicates(0);
-				int choice = view.getInt(users[playerA]);
+				int choice = view.getInt(users[playerA]);				
 				boolean found = board.correctPosition(choice,checkers.positions(0));
-				move.legalMoves(checkers.duplicates(0),choice , found, roll1, roll2);
-				//checkers.topchecker(choice, 0);
-				move.makemove(0);
-				//String ABC1 = view.getABC(users[playerA]);
+				int moveto = move.legalMoves(checkers.duplicates(0),choice , found, roll1, roll2);
+				move.movetoSet(moveto);
+				
+				if(moveto == choice-roll1) {
+					move.makemove(0);
+					int yco = checkers.topchecker(choice, 0)[0];
+					int xco = checkers.topchecker(choice, 0)[1];
+					board.getSet()[yco][xco] = " ";
+					checkers.UpdatePos();
+					board.printBoard(0);					
+					
+					checkers.duplicates(0);
+					int choice2 = view.getInt(users[playerA]);				
+					boolean found2 = board.correctPosition(choice2,checkers.positions(0));
+					int moveto2 = move.legalMoves(checkers.duplicates(0),choice2 , found2, 0, roll2);
+					move.movetoSet(moveto2);
+					move.makemove(0);
+					int yco2 = checkers.topchecker(choice2, 0)[0];
+					int xco2 = checkers.topchecker(choice2, 0)[1];
+					board.getSet()[yco2][xco2] = " ";
+					checkers.UpdatePos();
+					break;
+				}
+				if(moveto == choice-roll2) {
+					move.makemove(0);
+					int yco = checkers.topchecker(choice, 0)[0];
+					int xco = checkers.topchecker(choice, 0)[1];
+					board.getSet()[yco][xco] = " ";
+					checkers.UpdatePos();
+					board.printBoard(0);					
+					
+					checkers.duplicates(0);
+					int choice2 = view.getInt(users[playerA]);				
+					boolean found2 = board.correctPosition(choice2,checkers.positions(0));
+					int moveto2 = move.legalMoves(checkers.duplicates(0),choice2 , found2, roll1, 0);
+					move.movetoSet(moveto2);
+					move.makemove(0);
+					int yco2 = checkers.topchecker(choice2, 0)[0];
+					int xco2 = checkers.topchecker(choice2, 0)[1];
+					board.getSet()[yco2][xco2] = " ";
+					checkers.UpdatePos();
+					break;
+				}
+				if(moveto == choice-roll1-roll2) {
+					move.makemove(0);
+					int yco = checkers.topchecker(choice, 0)[0];
+					int xco = checkers.topchecker(choice, 0)[1];
+					board.getSet()[yco][xco] = " ";
+					checkers.UpdatePos();
+					break;
 
-
-
+				}
+				
 				}
 
 
@@ -118,6 +164,64 @@ public class Backgammon {
 				roll1 = dice.getRoll();
 				roll2 = dice.getRoll();
 				System.out.println(users[playerB] + " rolled " + roll1 + " and " + roll2 + "\n");
+				
+				checkers.duplicates(1);
+				int choice = view.getInt(users[playerB]);				
+				boolean found = board.correctPosition(choice,checkers.positions(1));
+				int moveto = move.legalMoves(checkers.duplicates(0),choice , found, roll1, roll2);
+				move.movetoSet(moveto);
+				
+				if(moveto == choice-roll1) {
+					move.makemove(1);
+					int yco = checkers.topchecker(choice, 1)[0];
+					int xco = checkers.topchecker(choice, 1)[1];
+					board.getSet()[yco][xco] = " ";
+					checkers.UpdatePos();
+					board.printBoard(1);					
+					
+					checkers.duplicates(1);
+					int choice2 = view.getInt(users[playerB]);				
+					boolean found2 = board.correctPosition(choice2,checkers.positions(1));
+					int moveto2 = move.legalMoves(checkers.duplicates(1),choice2 , found2, 0, roll2);
+					move.movetoSet(moveto2);
+					move.makemove(1);
+					int yco2 = checkers.topchecker(choice2, 1)[0];
+					int xco2 = checkers.topchecker(choice2, 1)[1];
+					board.getSet()[yco2][xco2] = " ";
+					checkers.UpdatePos();
+					break;
+				}
+				if(moveto == choice-roll2) {
+					move.makemove(1);
+					int yco = checkers.topchecker(choice, 1)[0];
+					int xco = checkers.topchecker(choice, 1)[1];
+					board.getSet()[yco][xco] = " ";
+					checkers.UpdatePos();
+					board.printBoard(1);					
+					
+					checkers.duplicates(1);
+					int choice2 = view.getInt(users[playerB]);				
+					boolean found2 = board.correctPosition(choice2,checkers.positions(1));
+					int moveto2 = move.legalMoves(checkers.duplicates(1),choice2 , found2, roll1, 0);
+					move.movetoSet(moveto2);
+					move.makemove(1);
+					int yco2 = checkers.topchecker(choice2, 1)[0];
+					int xco2 = checkers.topchecker(choice2, 1)[1];
+					board.getSet()[yco2][xco2] = " ";
+					checkers.UpdatePos();
+					break;
+				}
+				if(moveto == choice-roll1-roll2) {
+					move.makemove(1);
+					int yco = checkers.topchecker(choice, 1)[0];
+					int xco = checkers.topchecker(choice, 1)[1];
+					board.getSet()[yco][xco] = " ";
+					checkers.UpdatePos();
+					break;
+
+				}
+				
+				
 			}
 			if("Q".equalsIgnoreCase(input2)) {
 				users[playerB].EndGame();

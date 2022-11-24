@@ -25,12 +25,20 @@ public class Move{
 		boolean Avalid = true, Bvalid = true, Cvalid = true;
 		boolean skip = false;
 
+		
 
 
 		if(found) {
 			A = choice - roll1;
 			B = choice - roll2;
 			C = choice - roll1 - roll2;
+			
+			if(roll1 == 0) {
+				return moveto=B;
+			}
+			if(roll2 == 0) {
+				return moveto=A;
+			}
 
 			for(int i = 0; i<duplicates.length; i++) {
 				if(A == duplicates[i]) {
@@ -145,6 +153,10 @@ public class Move{
 				board.getSet()[yco+1][xco] = "o"; //bottom half
 				}
 	    }
+	}
+	
+	public void movetoSet(int x) {
+		moveto=x;
 	}
 
 }

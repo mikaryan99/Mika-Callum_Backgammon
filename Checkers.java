@@ -189,10 +189,10 @@ public class Checkers {
 
 		if((player == 0 && choice>12) || (player != 0 && choice<13)) {
 		for(int i =1; i<MatrixY/2; i++) {
-			System.out.print("yco1 =" + board.getSet()[i][xco]);
+			//System.out.print("yco1 =" + board.getSet()[i][xco]);
 			if(" ".equals(board.getSet()[i][xco])) {
 				yco = i-1;
-				System.out.print("yco1 =" + board.getSet()[i][xco]);
+				//System.out.print("yco1 =" + board.getSet()[i][xco]);
 				//board.getSet()[i][xco]= "BUG";
 				break;
 			}
