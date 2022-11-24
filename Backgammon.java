@@ -14,7 +14,7 @@ public class Backgammon {
 
 
 		//Test Area
-		Move move = new Move();
+		Move move = new Move(board);
 
 		//*************
 
@@ -73,7 +73,8 @@ public class Backgammon {
 				int choice = view.getInt(users[playerA]);
 				boolean found = board.correctPosition(choice,checkers.positions(0));
 				move.legalMoves(checkers.duplicates(0),choice , found, roll1, roll2);
-				checkers.topchecker(choice, playerA);
+				//checkers.topchecker(choice, 0);
+				move.makemove(0);
 				//String ABC1 = view.getABC(users[playerA]);
 
 

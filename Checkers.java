@@ -125,10 +125,10 @@ public class Checkers {
 		ArrayList<Integer> TEST = new ArrayList<Integer>();
 
 		if(turn == 0) {
-			 TEST = Ocheckers;
+			 TEST = Xcheckers;
 		}
 		else {
-			TEST = Xcheckers;
+			TEST = Ocheckers;
 		}
 
 		Set<Integer> pos = new HashSet<Integer>();
@@ -187,12 +187,14 @@ public class Checkers {
 		int xco,yco = 0;
 		xco = matrix[choice-1];
 
-		if((player == 0 && choice<13) || (player != 0 && choice>12)) {
-		for(int i =0; i<MatrixY/2; i++) {
-
+		if((player == 0 && choice>12) || (player != 0 && choice<13)) {
+		for(int i =1; i<MatrixY/2; i++) {
+			System.out.print("yco1 =" + board.getSet()[i][xco]);
 			if(" ".equals(board.getSet()[i][xco])) {
-				yco = i-1;                              //System.out.print("xco =" + xco + "\n");
-				break;                                  //System.out.print("yco = " + board.getSet()[i][xco]);
+				yco = i-1;
+				System.out.print("yco1 =" + board.getSet()[i][xco]);
+				//board.getSet()[i][xco]= "BUG";
+				break;
 			}
 		  }
 		}
@@ -200,15 +202,16 @@ public class Checkers {
 		for(int i = MatrixY-1; i>MatrixY/2; i--) {
 
 			if(" ".equals(board.getSet()[i][xco])) {
-				yco = i+1;                              //System.out.print("xco =" + xco + "\n");
-				break;                                  //System.out.print("yco = " + board.getSet()[i][xco]);
+				yco = i+1;
+				//System.out.print("yco2 =" + board.getSet()[i][xco]);
+				break;
 			}
 		  }
 		}
 
 		int[] coordinates = {yco,xco};
-		System.out.print("yco = " + yco + "\n");
-		System.out.print("xco = " + xco + "\n");
+		//System.out.print("yco = " + yco + "\n");
+		//System.out.print("xco = " + xco + "\n");
 
 		return coordinates;
 	}

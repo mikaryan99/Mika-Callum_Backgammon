@@ -6,9 +6,13 @@ package Backgammon;
 public class Move{
 
 	private View view = new View();
+	User[] users;
+	private Board board = new Board(users);
+	private Checkers checkers = new Checkers(board);
+	private int moveto = 0;
 
-	Move(){
-
+	Move(Board board){
+		this.board = board;
     }
 
 	// duplicates = spaces not free, positions = your checker locations, roll values
@@ -17,7 +21,7 @@ public class Move{
 
 		//possible moves
 		int A,B,C;
-		int moveto = 0; //return value
+		//int moveto = 0; //return value  ************************ go bCK TO THIS ^^^^ BAD CODE
 		boolean Avalid = true, Bvalid = true, Cvalid = true;
 		boolean skip = false;
 
@@ -118,10 +122,29 @@ public class Move{
 		return moveto;
 	}
 
+	public void makemove(int player) {              //int moveto, int player) {
+
+		int yco = checkers.topchecker(moveto, player)[0];
+		int xco = checkers.topchecker(moveto, player)[1];
+
+
+		if(player == 0) {
+			if(moveto>12) {
+				board.getSet()[yco+1][xco] = "x";
+				//System.out.println("ITS WORKING SORTA");
+			}
+			else {
+				board.getSet()[yco-1][xco] = "x";
+			}
+		}
+		else {
+			if(moveto>12) {
+				board.getSet()[yco-1][xco] = "o"; //top half
+				}
+			else {
+				board.getSet()[yco+1][xco] = "o"; //bottom half
+				}
+	    }
+	}
 
 }
-
-
-//take in A/B/C choice from user and return it
-//if A return roll1
-//nahhhht in Backgammon instead
