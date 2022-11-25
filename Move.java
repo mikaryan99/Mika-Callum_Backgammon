@@ -25,14 +25,14 @@ public class Move{
 		boolean Avalid = true, Bvalid = true, Cvalid = true;
 		boolean skip = false;
 
-		
+
 
 
 		if(found) {
 			A = choice - roll1;
 			B = choice - roll2;
 			C = choice - roll1 - roll2;
-			
+
 			if(roll1 == 0) {
 				return moveto=B;
 			}
@@ -50,6 +50,17 @@ public class Move{
 				if(C == duplicates[i]) {
 					Cvalid = false;
 				}
+				// if A B or C <= 0
+				// valid = false;
+			}
+			if(A <= 0) {
+				Avalid = false;
+			}
+			if(B <= 0) {
+				Bvalid = false;
+			}
+			if(C <= 0) {
+				Cvalid = false;
 			}
 
 			if(Avalid && Bvalid && Cvalid) {
@@ -92,6 +103,13 @@ public class Move{
 				//update checkers
 				//break
 			}
+			////TEST
+			if(!Avalid && !Bvalid && !Cvalid) {
+				System.out.print("No Moves Available, Next Player");
+				skip = true;
+				//break
+			}
+
 
 			if(!skip) {
 			String ABC1 = view.getABC();
@@ -154,7 +172,7 @@ public class Move{
 				}
 	    }
 	}
-	
+
 	public void movetoSet(int x) {
 		moveto=x;
 	}
