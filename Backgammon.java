@@ -60,9 +60,16 @@ public class Backgammon {
 				//move.legalMoves(checkers.duplicates(0),choice , found, roll1, roll2);
 			//}
             //*************************************************8
-			if("r".equalsIgnoreCase(input1)) {
+			if("r".equalsIgnoreCase(input1) || "dice".equalsIgnoreCase(input1)) {
+				if("r".equalsIgnoreCase(input1)) {
 				roll1 = dice.getRoll();
 				roll2 = dice.getRoll();
+				}
+				else {
+					int[] numbers = view.getDice();
+					roll1 = numbers[0];
+					roll2 = numbers[1];
+				}
 				System.out.print(users[playerA] + " rolled " + roll1 + " and " + roll2 + "\n");
 
 
@@ -150,7 +157,7 @@ public class Backgammon {
 				System.out.print("To quit the game enter: Q \n");
 				System.out.print("To roll dice enter: r \n");
 			}
-			if(!"r".equalsIgnoreCase(input1) && !"Q".equalsIgnoreCase(input1) && !"pip".equalsIgnoreCase(input1) && !"Q".equalsIgnoreCase(input1) && !"hint".equalsIgnoreCase(input1)) {
+			if(!"r".equalsIgnoreCase(input1) && !"Q".equalsIgnoreCase(input1) && !"pip".equalsIgnoreCase(input1) && !"dice".equalsIgnoreCase(input1) && !"hint".equalsIgnoreCase(input1)) {
 				System.out.print("Invalid Command, Try again\n");
 			}
 			}
@@ -170,9 +177,16 @@ public class Backgammon {
 				checkers.getPipCount();
 				//checkers.duplicates(1);
 			}
-			if("r".equalsIgnoreCase(input2)) {
+			if("r".equalsIgnoreCase(input2) || "dice".equalsIgnoreCase(input2)) {
+				if("r".equalsIgnoreCase(input2)) {
 				roll1 = dice.getRoll();
 				roll2 = dice.getRoll();
+				}
+				else {
+					int[] numbers = view.getDice();
+					roll1 = numbers[0];
+					roll2 = numbers[1];
+				}
 				System.out.println(users[playerB] + " rolled " + roll1 + " and " + roll2 + "\n");
 
 				checkers.duplicates(1);
@@ -236,7 +250,7 @@ public class Backgammon {
 			if("Q".equalsIgnoreCase(input2)) {
 				users[playerB].EndGame();
 			}
-			if(!"r".equalsIgnoreCase(input2) && !"Q".equalsIgnoreCase(input2) && !"pip".equalsIgnoreCase(input2) && !"Q".equalsIgnoreCase(input2) && !"hint".equalsIgnoreCase(input2)) {
+			if(!"r".equalsIgnoreCase(input2) && !"Q".equalsIgnoreCase(input2) && !"pip".equalsIgnoreCase(input2) && !"hint".equalsIgnoreCase(input2) && !"dice".equalsIgnoreCase(input2)) {
 				System.out.print("Invalid Command, Try again\n");
 			}
 			if("hint".equalsIgnoreCase(input2)) {

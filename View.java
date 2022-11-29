@@ -30,16 +30,16 @@ public class View {
 		return number;
 
 	}
-	
-	public String getABC(User user) {
+
+	/*public String getABC(User user) {
 		System.out.print(user + " enter A B or C: ");
-		in.nextLine();
+		//in.nextLine();
 		String ABC = in.nextLine();
 		// if not int give error
 		return ABC;
 
-	}
-	
+	}*/
+
 
 
 
@@ -50,5 +50,17 @@ public class View {
 		return ABC;
 
 	}
+
+	public int[] getDice() {
+
+		int[] numbers = new int[2];
+	    //String s = in.next();
+
+	    numbers[0] = in.nextInt();
+	    numbers[1] = in.nextInt();
+
+	     return numbers;
+	}
+
 
 }
