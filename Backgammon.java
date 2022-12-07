@@ -53,7 +53,7 @@ public class Backgammon {
 				checkers.getPipCount();
 				checkers.duplicates(0);
 			}
-			
+
 			//TEST SPACE ************************************8
 			//if("hint".equalsIgnoreCase(input1)) {
 				//int choice = view.getInt(users[playerA]);
@@ -125,7 +125,7 @@ public class Backgammon {
 					checkers.duplicates(0);
 					int choice2 = view.getInt(users[playerA]);
 					boolean found2 = board.correctPosition(choice2,checkers.positions(0));
-					
+
 					int moveto2 = move.legalMoves(checkers.duplicates(0),choice2 , found2, roll1, 0);
 					move.movetoSet(moveto2);
 					move.makemove(0);
@@ -167,7 +167,7 @@ public class Backgammon {
 
 			while(!"r".equalsIgnoreCase(input1) && !"Q".equalsIgnoreCase(input1));
 
-			/////////////////////////////////////////////////////
+			/////////////////////////PLAYER TWO////////////////////////////
 
 
 			System.out.print("Current Player: " + users[playerB].toString() + "\n");
@@ -195,7 +195,7 @@ public class Backgammon {
 				checkers.duplicates(1);
 				int choice = view.getInt(users[playerB]);
 				boolean found = board.correctPosition(choice,checkers.positions(1));
-				int moveto = move.legalMoves(checkers.duplicates(0),choice , found, roll1, roll2);
+				int moveto = move.legalMoves(checkers.duplicates(1),choice , found, roll1, roll2);
 				move.movetoSet(moveto);
 
 				if(moveto == choice-roll1 && moveto != 0) {

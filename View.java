@@ -44,7 +44,7 @@ public class View {
 
 
 	public String getABC() {
-		System.out.println( "\n enter a choice: A B or C ");
+		System.out.println( "\n enter a letter choice: ");
 		String ABC = in.nextLine();
 		// if not A B or C give error ******************************************88
 		return ABC;

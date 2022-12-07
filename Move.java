@@ -158,7 +158,7 @@ public class Move{
 
 			if(moveto>12) {
 				if(board.getSet()[yco+1][xco] != " ") {
-					board.getSet()[2+centreO][8] = "o";
+					board.getSet()[21-centreO][8] = "o";
 					centreO++;
 				}
 				board.getSet()[yco+1][xco] = "x";
@@ -166,7 +166,7 @@ public class Move{
 			}
 			else {
 				if(board.getSet()[yco-1][xco] != " ") {
-					board.getSet()[2+centreO][8] = "o";
+					board.getSet()[21-centreO][8] = "o";
 					centreO++;
 				}
 				board.getSet()[yco-1][xco] = "x";
@@ -176,14 +176,14 @@ public class Move{
 		else {
 			if(moveto>12) {
 				if(board.getSet()[yco-1][xco] != " ") {
-					board.getSet()[21-centreX][8] = "x";
+					board.getSet()[2+centreX][8] = "x";
 					centreX++;
 				}
 				board.getSet()[yco-1][xco] = "o"; //top half
 				}
 			else {
 				if(board.getSet()[yco+1][xco] != " ") {
-					board.getSet()[21-centreX][8] = "x";
+					board.getSet()[2+centreX][8] = "x";
 					centreX++;
 				}
 				board.getSet()[yco+1][xco] = "o"; //bottom half
