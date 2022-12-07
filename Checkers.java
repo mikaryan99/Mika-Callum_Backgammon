@@ -87,6 +87,11 @@ public class Checkers {
 		    	int x = matrix[i];
 		    	int Xdisplayi = displayX[i];
 		    	int Odisplayi = displayO[i];
+		    	if(board.getSet()[y][8] == "o") {
+					Ocheckers.add(25);
+					OintermsX.add(25);
+					Omatrixpos.add(8);
+					}
 		    	if(board.getSet()[y][x] == "x") {
 					Xcheckers.add(Xdisplayi);
 					XintermsO.add(Odisplayi);
@@ -165,7 +170,7 @@ public class Checkers {
 		Set<Integer> duplicates = new HashSet<Integer>();
 
 		for(int i = 0; i < TEST.size(); i++) {
-			positions.add(TEST.get(i));
+			//positions.add(TEST.get(i));
             if(positions.add(TEST.get(i)) == false)
             	duplicates.add(TEST.get(i));
                 //System.out.println(TEST.get(i) + "is duplicated");

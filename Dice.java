@@ -28,4 +28,6 @@ public class Dice {
 			playerA = 1;*/
 		}
 	}
+
+	//public int
 }
