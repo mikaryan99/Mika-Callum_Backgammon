@@ -10,6 +10,7 @@ public class Move{
 	private Board board = new Board(users);
 	private Checkers checkers = new Checkers(board);
 	private int moveto = 0;
+	private int centreO =0, centreX =0;
 
 	Move(Board board){
 		this.board = board;
@@ -105,7 +106,7 @@ public class Move{
 			}
 			////TEST
 			if(!Avalid && !Bvalid && !Cvalid) {
-				System.out.print("No Moves Available, Next Player");
+				System.out.print("No Moves Available, Next Player \n");
 				skip = true;
 				//break
 			}
@@ -153,24 +154,41 @@ public class Move{
 		int yco = checkers.topchecker(moveto, player)[0];
 		int xco = checkers.topchecker(moveto, player)[1];
 
-
 		if(player == 0) {
+
 			if(moveto>12) {
+				if(board.getSet()[yco+1][xco] != " ") {
+					board.getSet()[2+centreO][8] = "o";
+					centreO++;
+				}
 				board.getSet()[yco+1][xco] = "x";
 				//System.out.println("ITS WORKING SORTA");
 			}
 			else {
 				board.getSet()[yco-1][xco] = "x";
+				if(board.getSet()[yco-1][xco] != " ") {
+					board.getSet()[2+centreO][8] = "o";
+					centreO++;
+				}
 			}
 		}
 		else {
 			if(moveto>12) {
 				board.getSet()[yco-1][xco] = "o"; //top half
+				if(board.getSet()[yco-1][xco] != " ") {
+					board.getSet()[21-centreX][8] = "x";
+					centreX++;
+				}
 				}
 			else {
 				board.getSet()[yco+1][xco] = "o"; //bottom half
+				if(board.getSet()[yco+1][xco] != " ") {
+					board.getSet()[21-centreX][8] = "x";
+					centreX++;
 				}
+			}
 	    }
+
 	}
 
 	public void movetoSet(int x) {
