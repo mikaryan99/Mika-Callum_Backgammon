@@ -20,8 +20,11 @@ public class View {
 	public String getCommand (User user) {
 		System.out.print(user + " enter command: ");
 		String name = in.nextLine();
-		return name;
+
+			return name;
 	}
+	
+
 
 	public int getInt(User user) {
 		System.out.print(user + " enter an integer: ");

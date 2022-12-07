@@ -128,11 +128,16 @@ public class Backgammon {
 					
 					int moveto2 = move.legalMoves(checkers.duplicates(0),choice2 , found2, roll1, 0);
 					move.movetoSet(moveto2);
+					
+					if(moveto2 != 0) { // this is new
 					move.makemove(0);
 					int yco2 = checkers.topchecker(choice2, 0)[0];
 					int xco2 = checkers.topchecker(choice2, 0)[1];
 					board.getSet()[yco2][xco2] = " ";
 					checkers.UpdatePos();
+					break;
+					}
+					
 					break;
 				}
 				if(moveto == choice-roll1-roll2 && moveto != 0) {
@@ -195,7 +200,7 @@ public class Backgammon {
 				checkers.duplicates(1);
 				int choice = view.getInt(users[playerB]);
 				boolean found = board.correctPosition(choice,checkers.positions(1));
-				int moveto = move.legalMoves(checkers.duplicates(0),choice , found, roll1, roll2);
+				int moveto = move.legalMoves(checkers.duplicates(1),choice , found, roll1, roll2);
 				move.movetoSet(moveto);
 
 				if(moveto == choice-roll1 && moveto != 0) {
@@ -211,11 +216,15 @@ public class Backgammon {
 					boolean found2 = board.correctPosition(choice2,checkers.positions(1));
 					int moveto2 = move.legalMoves(checkers.duplicates(1),choice2 , found2, 0, roll2);
 					move.movetoSet(moveto2);
+					
+					if(moveto2 != 0) { // this is new
 					move.makemove(1);
 					int yco2 = checkers.topchecker(choice2, 1)[0];
 					int xco2 = checkers.topchecker(choice2, 1)[1];
 					board.getSet()[yco2][xco2] = " ";
 					checkers.UpdatePos();
+					break;
+					}
 					break;
 				}
 				if(moveto == choice-roll2 && moveto != 0) {
@@ -231,11 +240,15 @@ public class Backgammon {
 					boolean found2 = board.correctPosition(choice2,checkers.positions(1));
 					int moveto2 = move.legalMoves(checkers.duplicates(1),choice2 , found2, roll1, 0);
 					move.movetoSet(moveto2);
-					move.makemove(1);
-					int yco2 = checkers.topchecker(choice2, 1)[0];
-					int xco2 = checkers.topchecker(choice2, 1)[1];
-					board.getSet()[yco2][xco2] = " ";
-					checkers.UpdatePos();
+					
+					if(moveto2 != 0) { // this is new
+						move.makemove(1);
+						int yco2 = checkers.topchecker(choice2, 1)[0];
+						int xco2 = checkers.topchecker(choice2, 1)[1];
+						board.getSet()[yco2][xco2] = " ";
+						checkers.UpdatePos();
+						break;
+						}
 					break;
 				}
 				if(moveto == choice-roll1-roll2 && moveto != 0) {
