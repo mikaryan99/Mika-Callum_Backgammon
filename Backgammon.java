@@ -53,6 +53,7 @@ public class Backgammon {
 				checkers.getPipCount();
 				checkers.duplicates(0);
 			}
+			
 			//TEST SPACE ************************************8
 			//if("hint".equalsIgnoreCase(input1)) {
 				//int choice = view.getInt(users[playerA]);
@@ -83,7 +84,7 @@ public class Backgammon {
 				move.movetoSet(moveto);
 
 				//CHosen A
-				if(moveto == choice-roll1) {
+				if(moveto == choice-roll1  && moveto != 0) {
 					//roll1 = 0;
 					move.makemove(0);
 					int yco = checkers.topchecker(choice, 0)[0];
@@ -96,6 +97,7 @@ public class Backgammon {
 					int choice2 = view.getInt(users[playerA]);
 					boolean found2 = board.correctPosition(choice2,checkers.positions(0));
 					//error? below
+
 					int moveto2 = move.legalMoves(checkers.duplicates(0),choice2 , found2, 0, roll2);
 					move.movetoSet(moveto2);
 
@@ -112,7 +114,7 @@ public class Backgammon {
 					//}
 					break;
 				}
-				if(moveto == choice-roll2) {
+				if(moveto == choice-roll2 && moveto != 0) {
 					move.makemove(0);
 					int yco = checkers.topchecker(choice, 0)[0];
 					int xco = checkers.topchecker(choice, 0)[1];
@@ -123,6 +125,7 @@ public class Backgammon {
 					checkers.duplicates(0);
 					int choice2 = view.getInt(users[playerA]);
 					boolean found2 = board.correctPosition(choice2,checkers.positions(0));
+					
 					int moveto2 = move.legalMoves(checkers.duplicates(0),choice2 , found2, roll1, 0);
 					move.movetoSet(moveto2);
 					move.makemove(0);
@@ -132,7 +135,7 @@ public class Backgammon {
 					checkers.UpdatePos();
 					break;
 				}
-				if(moveto == choice-roll1-roll2) {
+				if(moveto == choice-roll1-roll2 && moveto != 0) {
 					move.makemove(0);
 					int yco = checkers.topchecker(choice, 0)[0];
 					int xco = checkers.topchecker(choice, 0)[1];
@@ -141,7 +144,7 @@ public class Backgammon {
 					break;
 
 				}
-
+				break;
 				}
 
 
@@ -195,7 +198,7 @@ public class Backgammon {
 				int moveto = move.legalMoves(checkers.duplicates(0),choice , found, roll1, roll2);
 				move.movetoSet(moveto);
 
-				if(moveto == choice-roll1) {
+				if(moveto == choice-roll1 && moveto != 0) {
 					move.makemove(1);
 					int yco = checkers.topchecker(choice, 1)[0];
 					int xco = checkers.topchecker(choice, 1)[1];
@@ -215,7 +218,7 @@ public class Backgammon {
 					checkers.UpdatePos();
 					break;
 				}
-				if(moveto == choice-roll2) {
+				if(moveto == choice-roll2 && moveto != 0) {
 					move.makemove(1);
 					int yco = checkers.topchecker(choice, 1)[0];
 					int xco = checkers.topchecker(choice, 1)[1];
@@ -235,7 +238,7 @@ public class Backgammon {
 					checkers.UpdatePos();
 					break;
 				}
-				if(moveto == choice-roll1-roll2) {
+				if(moveto == choice-roll1-roll2 && moveto != 0) {
 					move.makemove(1);
 					int yco = checkers.topchecker(choice, 1)[0];
 					int xco = checkers.topchecker(choice, 1)[1];
@@ -244,8 +247,7 @@ public class Backgammon {
 					break;
 
 				}
-
-
+				break;
 			}
 			if("Q".equalsIgnoreCase(input2)) {
 				users[playerB].EndGame();

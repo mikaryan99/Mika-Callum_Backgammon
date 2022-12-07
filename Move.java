@@ -165,27 +165,29 @@ public class Move{
 				//System.out.println("ITS WORKING SORTA");
 			}
 			else {
-				board.getSet()[yco-1][xco] = "x";
 				if(board.getSet()[yco-1][xco] != " ") {
 					board.getSet()[2+centreO][8] = "o";
 					centreO++;
 				}
+				board.getSet()[yco-1][xco] = "x";
+
 			}
 		}
 		else {
 			if(moveto>12) {
-				board.getSet()[yco-1][xco] = "o"; //top half
 				if(board.getSet()[yco-1][xco] != " ") {
 					board.getSet()[21-centreX][8] = "x";
 					centreX++;
 				}
+				board.getSet()[yco-1][xco] = "o"; //top half
 				}
 			else {
-				board.getSet()[yco+1][xco] = "o"; //bottom half
 				if(board.getSet()[yco+1][xco] != " ") {
 					board.getSet()[21-centreX][8] = "x";
 					centreX++;
 				}
+				board.getSet()[yco+1][xco] = "o"; //bottom half
+
 			}
 	    }
 

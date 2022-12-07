@@ -53,6 +53,8 @@ public class Board {
 				 }
 				 else set[MatrixY-1][x] = s;
 			}
+			set[23][8] = " ";
+			set[0][8] = "25";
 		}
 		else {
 			for(int i = 12, x = 1; i>0; i--, x++) {
@@ -72,6 +74,8 @@ public class Board {
 				 }
 				 else set[MatrixY-1][x] = s;
 			}
+			set[0][8] = " ";
+			set[23][8] = "25";
 		}
 
 		for(int r=0;r<set.length; r++) {
@@ -80,6 +84,8 @@ public class Board {
 			 }
 			 System.out.println();
 			}
+
+
 
 	}
 
