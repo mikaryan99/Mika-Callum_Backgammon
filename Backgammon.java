@@ -109,7 +109,7 @@ public class Backgammon {
 					checkers.UpdatePos();
 					break;
 					}
-					
+
 					else {
 						System.out.print("Cant move here\n");
 					}
@@ -129,7 +129,7 @@ public class Backgammon {
 
 					int moveto2 = move.legalMoves(checkers.duplicates(0),choice2 , found2, roll1, 0);
 					move.movetoSet(moveto2);
-					
+
 					if(moveto2 > 0) { // this is new
 					move.makemove(0);
 					int yco2 = checkers.topchecker(choice2, 0)[0];
@@ -141,7 +141,7 @@ public class Backgammon {
 					else {
 						System.out.print("Cant move here\n");
 					}
-					
+
 					break;
 				}
 				if(moveto == choice-roll1-roll2 && moveto != 0) {
@@ -220,7 +220,7 @@ public class Backgammon {
 					boolean found2 = board.correctPosition(choice2,checkers.positions(1));
 					int moveto2 = move.legalMoves(checkers.duplicates(1),choice2 , found2, 0, roll2);
 					move.movetoSet(moveto2);
-					
+
 					if(moveto2 != 0) { // this is new
 					move.makemove(1);
 					int yco2 = checkers.topchecker(choice2, 1)[0];
@@ -247,7 +247,7 @@ public class Backgammon {
 					boolean found2 = board.correctPosition(choice2,checkers.positions(1));
 					int moveto2 = move.legalMoves(checkers.duplicates(1),choice2 , found2, roll1, 0);
 					move.movetoSet(moveto2);
-					
+
 					if(moveto2 != 0) { // this is new
 						move.makemove(1);
 						int yco2 = checkers.topchecker(choice2, 1)[0];
