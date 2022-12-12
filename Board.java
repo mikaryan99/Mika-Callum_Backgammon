@@ -18,6 +18,14 @@ public class Board {
 				}
 
 
+        set[0][17] = "score";
+		set[8][17] = "x =";
+		//String convertedstring=Integer.toString(users[0].getBearoff());
+		//set[9][17] = convertedstring;
+		set[11][17] = "0 =";
+		//String convertedstring2=Integer.toString(users[1].getBearoff());
+		//set[12][17] = convertedstring2;
+
 		for(int y = 1; y< MatrixY-1; y++) {
 			set[y][0]  = "|";
 			set[y][7]  = "|";
@@ -34,6 +42,12 @@ public class Board {
 
 
 	public void printBoard(int turn) {
+
+		String convertedstring=Integer.toString(users[0].getBearoff());
+		set[9][17] = convertedstring;
+
+		String convertedstring2=Integer.toString(users[1].getBearoff());
+		set[12][17] = convertedstring2;
 
 		if(turn == 0) {
 			for(int i = 13, x = 1; i<=24; i++, x++) {

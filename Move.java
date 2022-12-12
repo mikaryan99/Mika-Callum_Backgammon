@@ -6,19 +6,21 @@ package Backgammon;
 public class Move{
 
 	private View view = new View();
-	User[] users;
-	private Board board = new Board(users);
-	private Checkers checkers = new Checkers(board);
+	User[] users; // = new User[2];
+	private Board board;// = new Board(users);
+	private Checkers checkers;// = new Checkers(board);
 	private int moveto = 0;
-	private int centreO =0, centreX =0;
+	//private int centreO =0, centreX =0;
 
-	Move(Board board){
+	Move(User[] users, Board board, Checkers checkers){
+		this.users = users;
 		this.board = board;
+		this.checkers = checkers;
     }
 
 	// duplicates = spaces not free, positions = your checker locations, roll values
 	// MIGHT NEED convert pip place to matrix pos function in checkers or board (choice was position
-	public int legalMoves(int[] duplicates, int choice, boolean found, int roll1, int roll2) {  // int player)
+	public int legalMoves(int[] duplicates, int choice, boolean found, int roll1, int roll2, int player) {  // int player)
 
 		//possible moves
 		int A,B,C;
@@ -40,6 +42,15 @@ public class Move{
 			if(roll2 == 0) {
 				return moveto=A;
 			}
+			// TEST
+			boolean flag = false;
+			for(int i=0; i < checkers.positions(player).length; i++) {
+				if(checkers.positions(player)[i] > 6) {
+					flag = true;
+					break;
+				}
+			}
+			//*****
 
 			for(int i = 0; i<duplicates.length; i++) {
 				if(A == duplicates[i]) {
@@ -54,14 +65,31 @@ public class Move{
 				// if A B or C <= 0
 				// valid = false;
 			}
-			if(A <= 0) {
-				Avalid = false;
+
+			if(flag) {
+				if(A <= 0) {
+					Avalid = false;
+				}
+				if(B <= 0) {
+					Bvalid = false;
+				}
+				if(C <= 0) {
+					Cvalid = false;
+				}
 			}
-			if(B <= 0) {
-				Bvalid = false;
-			}
-			if(C <= 0) {
-				Cvalid = false;
+			else {
+				if(A <= 0) {
+					Avalid = true;
+					A = 26;
+				}
+				if(B <= 0) {
+					Bvalid = true;
+					B = 26;
+				}
+				if(C <= 0) {
+					Cvalid = true;
+					C = 26;
+				}
 			}
 
 			if(Avalid && Bvalid && Cvalid) {
@@ -154,43 +182,64 @@ public class Move{
 		int yco = checkers.topchecker(moveto, player)[0];
 		int xco = checkers.topchecker(moveto, player)[1];
 
-		if(player == 0) {
+		boolean skip = false;
+		if(moveto == 26) {
+			skip = true;
+		}
 
-			if(moveto>12) {
+		if(!skip) {
+
+
+
+			if(player == 0) {
+
 				if(board.getSet()[yco+1][xco] != " ") {
-					board.getSet()[21-centreO][8] = "o";
-					centreO++;
+					board.getSet()[checkers.topchecker(25, 1)[0]-1][8] = "o";
 				}
-				board.getSet()[yco+1][xco] = "x";
-				//System.out.println("ITS WORKING SORTA");
+
+				if(moveto>12) {
+					/*if(board.getSet()[yco+1][xco] != " ") {
+						board.getSet()[21-centreO][8] = "o";
+						//centreO++;
+					}*/
+					board.getSet()[yco+1][xco] = "x";
+					//System.out.println("ITS WORKING SORTA");
+				}
+				else {
+					/*if(board.getSet()[yco-1][xco] != " ") {
+						board.getSet()[21-centreO][8] = "o";
+						centreO++;
+					}*/
+					board.getSet()[yco-1][xco] = "x";
+
+				}
 			}
 			else {
-				if(board.getSet()[yco-1][xco] != " ") {
-					board.getSet()[21-centreO][8] = "o";
-					centreO++;
-				}
-				board.getSet()[yco-1][xco] = "x";
 
-			}
+				if(board.getSet()[yco+1][xco] != " ") {
+					board.getSet()[checkers.topchecker(25, 0)[0]+1][8] = "x";
+				}
+
+				if(moveto>12) {
+					/*if(board.getSet()[yco-1][xco] != " ") {
+						board.getSet()[2+centreX][8] = "x";
+						centreX++;
+					}*/
+					board.getSet()[yco-1][xco] = "o"; //top half
+					}
+				else {
+					/*if(board.getSet()[yco+1][xco] != " ") {
+						board.getSet()[2+centreX][8] = "x";
+						centreX++;
+					}*/
+					board.getSet()[yco+1][xco] = "o"; //bottom half
+
+				}
+		    }
 		}
 		else {
-			if(moveto>12) {
-				if(board.getSet()[yco-1][xco] != " ") {
-					board.getSet()[2+centreX][8] = "x";
-					centreX++;
-				}
-				board.getSet()[yco-1][xco] = "o"; //top half
-				}
-			else {
-				if(board.getSet()[yco+1][xco] != " ") {
-					board.getSet()[2+centreX][8] = "x";
-					centreX++;
-				}
-				board.getSet()[yco+1][xco] = "o"; //bottom half
-
-			}
-	    }
-
+			users[player].addBearoff();
+		}
 	}
 
 	public void movetoSet(int x) {

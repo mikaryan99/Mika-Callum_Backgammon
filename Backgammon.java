@@ -14,7 +14,7 @@ public class Backgammon {
 		Dice dice = new Dice();
 
 		//Test Area
-		Move move = new Move(board);
+		Move move = new Move(users, board, checkers);
 
 		//*************
 
@@ -54,13 +54,6 @@ public class Backgammon {
 				checkers.duplicates(0);
 			}
 
-			//TEST SPACE ************************************8
-			//if("hint".equalsIgnoreCase(input1)) {
-				//int choice = view.getInt(users[playerA]);
-				//boolean found = board.correctPosition(choice,checkers.positions(0));
-				//move.legalMoves(checkers.duplicates(0),choice , found, roll1, roll2);
-			//}
-            //*************************************************8
 			if("r".equalsIgnoreCase(input1) || "dice".equalsIgnoreCase(input1)) {
 				if("r".equalsIgnoreCase(input1)) {
 				roll1 = dice.getRoll();
@@ -80,8 +73,10 @@ public class Backgammon {
 				checkers.duplicates(0);
 				int choice = view.getInt(users[playerA]);
 				boolean found = board.correctPosition(choice,checkers.positions(0));
-				int moveto = move.legalMoves(checkers.duplicates(0),choice , found, roll1, roll2);
-				move.movetoSet(moveto);
+				int moveto = move.legalMoves(checkers.duplicates(0),choice , found, roll1, roll2, 0);
+/*  */			move.movetoSet(moveto);
+checkers.UpdatePos();
+
 
 				//CHosen A
 				if(moveto == choice-roll1  && moveto != 0) {
@@ -98,7 +93,7 @@ public class Backgammon {
 					boolean found2 = board.correctPosition(choice2,checkers.positions(0));
 					//error? below
 
-					int moveto2 = move.legalMoves(checkers.duplicates(0),choice2 , found2, 0, roll2);
+					int moveto2 = move.legalMoves(checkers.duplicates(0),choice2 , found2, 0, roll2, 0);
 					move.movetoSet(moveto2);
 
 					if(moveto2 > 0) { // this is new
@@ -127,7 +122,7 @@ public class Backgammon {
 					int choice2 = view.getInt(users[playerA]);
 					boolean found2 = board.correctPosition(choice2,checkers.positions(0));
 
-					int moveto2 = move.legalMoves(checkers.duplicates(0),choice2 , found2, roll1, 0);
+					int moveto2 = move.legalMoves(checkers.duplicates(0),choice2 , found2, roll1, 0, 0);
 					move.movetoSet(moveto2);
 
 					if(moveto2 > 0) { // this is new
@@ -144,6 +139,7 @@ public class Backgammon {
 
 					break;
 				}
+			checkers.UpdatePos();
 				if(moveto == choice-roll1-roll2 && moveto != 0) {
 					move.makemove(0);
 					int yco = checkers.topchecker(choice, 0)[0];
@@ -178,7 +174,7 @@ public class Backgammon {
 
 			/////////////////////////PLAYER TWO////////////////////////////
 
-
+			checkers.UpdatePos();
 			System.out.print("Current Player: " + users[playerB].toString() + "\n");
 			board.printBoard(1);
 			do {
@@ -204,8 +200,9 @@ public class Backgammon {
 				checkers.duplicates(1);
 				int choice = view.getInt(users[playerB]);
 				boolean found = board.correctPosition(choice,checkers.positions(1));
-				int moveto = move.legalMoves(checkers.duplicates(1),choice , found, roll1, roll2);
+				int moveto = move.legalMoves(checkers.duplicates(1),choice , found, roll1, roll2, 1);
 				move.movetoSet(moveto);
+			checkers.UpdatePos();
 
 				if(moveto == choice-roll1 && moveto != 0) {
 					move.makemove(1);
@@ -218,7 +215,7 @@ public class Backgammon {
 					checkers.duplicates(1);
 					int choice2 = view.getInt(users[playerB]);
 					boolean found2 = board.correctPosition(choice2,checkers.positions(1));
-					int moveto2 = move.legalMoves(checkers.duplicates(1),choice2 , found2, 0, roll2);
+					int moveto2 = move.legalMoves(checkers.duplicates(1),choice2 , found2, 0, roll2, 1);
 					move.movetoSet(moveto2);
 
 					if(moveto2 != 0) { // this is new
@@ -234,6 +231,7 @@ public class Backgammon {
 					}
 					break;
 				}
+				checkers.UpdatePos();
 				if(moveto == choice-roll2 && moveto != 0) {
 					move.makemove(1);
 					int yco = checkers.topchecker(choice, 1)[0];
@@ -245,9 +243,10 @@ public class Backgammon {
 					checkers.duplicates(1);
 					int choice2 = view.getInt(users[playerB]);
 					boolean found2 = board.correctPosition(choice2,checkers.positions(1));
-					int moveto2 = move.legalMoves(checkers.duplicates(1),choice2 , found2, roll1, 0);
-					move.movetoSet(moveto2);
+					int moveto2 = move.legalMoves(checkers.duplicates(1),choice2 , found2, roll1, 0, 1);
+/* ****** */		move.movetoSet(moveto2);  // this function could be wrong and bypassing error checks from legal ??
 
+checkers.UpdatePos();
 					if(moveto2 != 0) { // this is new
 						move.makemove(1);
 						int yco2 = checkers.topchecker(choice2, 1)[0];
@@ -271,6 +270,7 @@ public class Backgammon {
 				}
 				break;
 			}
+		checkers.UpdatePos();
 			if("Q".equalsIgnoreCase(input2)) {
 				users[playerB].EndGame();
 			}

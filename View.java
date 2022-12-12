@@ -23,7 +23,7 @@ public class View {
 
 			return name;
 	}
-	
+
 
 
 	public int getInt(User user) {

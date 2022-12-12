@@ -56,6 +56,7 @@ public class Checkers {
 
 
 	public void UpdatePos() {
+
 		Xcheckers.clear();
 		Ocheckers.clear();
 		OintermsX.clear();
@@ -160,10 +161,10 @@ public class Checkers {
 		ArrayList<Integer> TEST = new ArrayList<Integer>();
 
 		if(turn == 0) {
-			 TEST = XintermsO;
+			 TEST = OintermsX;
 		}
 		else {
-			TEST = OintermsX;
+			TEST = XintermsO;
 		}
 
 		Set<Integer> positions = new HashSet<Integer>();
@@ -181,7 +182,7 @@ public class Checkers {
 	    int intduplicates[] = new int[objduplicates.length];
 	    for(int i=0; i<objduplicates.length; i++){
 	         intduplicates[i] = (int) objduplicates[i];
-	        System.out.println(intduplicates[i]);
+	       // System.out.println(intduplicates[i]);
 	      }
 
 		return intduplicates;
@@ -189,35 +190,57 @@ public class Checkers {
 	}
 
 	public int[] topchecker(int choice, int player){
+
+		//board.printBoard(player);
+
 		int xco,yco = 0;
 		xco = matrix[choice-1];
 		//System.out.print("xco = " + xco + "\n");
 
-		if((player == 0 && choice>12) || (player != 0 && choice<13)) {
-		for(int i =1; i<MatrixY/2; i++) {
-			//System.out.print("xco1 = " + board.getSet()[i][xco] + "\n");
-			if(" ".equals(board.getSet()[i][xco])) {
-				yco = i-1;
-				//System.out.print("    yco1 =" + board.getSet()[yco][xco]);
-				//board.getSet()[i][xco]= "BUG";
-				break;
+		if(player == 0) {
+			if(choice>12) {
+				for(int i =2; i<MatrixY/2; i++) {
+
+					if(!"x".equals(board.getSet()[i][xco])) {
+						yco = i-1;
+						break;
+					}
+				  }
 			}
-		  }
+			else {
+				for(int i = MatrixY-3; i>MatrixY/2; i--) {
+
+					if(!"x".equals(board.getSet()[i][xco])) {
+						yco = i+1;
+						break;
+					}
+				  }
+			}
 		}
 		else {
-		for(int i = MatrixY-2; i>MatrixY/2; i--) {
+			if(choice<13) {
+				for(int i =2; i<MatrixY/2; i++) {
 
-			if(" ".equals(board.getSet()[i][xco])) {
-				yco = i+1;
-				//System.out.print("yco2 =" + board.getSet()[i][xco]);
-				break;
+					if(!"o".equals(board.getSet()[i][xco])) {
+						yco = i-1;
+						break;
+					}
+				  }
 			}
-		  }
+			else {
+				for(int i = MatrixY-3; i>MatrixY/2; i--) {
+
+					if(!"o".equals(board.getSet()[i][xco])) {
+						yco = i+1;
+						break;
+					}
+				  }
+
+			}
 		}
 
 		int[] coordinates = {yco,xco};
 		//System.out.print("yco = " + yco + "\n");
-		//System.out.print("xco = " + xco + "\n");
 
 		return coordinates;
 	}
