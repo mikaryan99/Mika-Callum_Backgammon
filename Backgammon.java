@@ -75,8 +75,15 @@ public class Backgammon {
 				boolean found = board.correctPosition(choice,checkers.positions(0));
 				int moveto = move.legalMoves(checkers.duplicates(0),choice , found, roll1, roll2, 0);
 /*  */			move.movetoSet(moveto);
-checkers.UpdatePos();
 
+                if(moveto == 26) {
+    				move.makemove(0);
+					int yco = checkers.topchecker(choice, 0)[0];
+					int xco = checkers.topchecker(choice, 0)[1];
+					board.getSet()[yco][xco] = " ";
+					checkers.UpdatePos();
+					board.printBoard(0);
+                }
 
 				//CHosen A
 				if(moveto == choice-roll1  && moveto != 0) {
@@ -202,7 +209,17 @@ checkers.UpdatePos();
 				boolean found = board.correctPosition(choice,checkers.positions(1));
 				int moveto = move.legalMoves(checkers.duplicates(1),choice , found, roll1, roll2, 1);
 				move.movetoSet(moveto);
-			checkers.UpdatePos();
+
+
+                if(moveto == 26) {
+    				move.makemove(1);
+					int yco = checkers.topchecker(choice, 1)[0];
+					int xco = checkers.topchecker(choice, 1)[1];
+					board.getSet()[yco][xco] = " ";
+					checkers.UpdatePos();
+					board.printBoard(1);
+                }
+
 
 				if(moveto == choice-roll1 && moveto != 0) {
 					move.makemove(1);
@@ -246,7 +263,7 @@ checkers.UpdatePos();
 					int moveto2 = move.legalMoves(checkers.duplicates(1),choice2 , found2, roll1, 0, 1);
 /* ****** */		move.movetoSet(moveto2);  // this function could be wrong and bypassing error checks from legal ??
 
-checkers.UpdatePos();
+
 					if(moveto2 != 0) { // this is new
 						move.makemove(1);
 						int yco2 = checkers.topchecker(choice2, 1)[0];

@@ -179,9 +179,6 @@ public class Move{
 
 	public void makemove(int player) {              //int moveto, int player) {
 
-		int yco = checkers.topchecker(moveto, player)[0];
-		int xco = checkers.topchecker(moveto, player)[1];
-
 		boolean skip = false;
 		if(moveto == 26) {
 			skip = true;
@@ -189,6 +186,8 @@ public class Move{
 
 		if(!skip) {
 
+			int yco = checkers.topchecker(moveto, player)[0];
+			int xco = checkers.topchecker(moveto, player)[1];
 
 			if(player == 0) {
 
@@ -237,11 +236,11 @@ public class Move{
 		    }
 		}
 		else {
-			int x = users[player].getBearoff();
-			System.out.println("bearoff = " + x);
+			//int x = users[player].getBearoff();
+			//System.out.print("bearoff = " + x);
 			users[player].addBearoff();
-			int y = users[player].getBearoff();
-			System.out.println("bearoff = " + y + "\n");
+			//int y = users[player].getBearoff();
+			//System.out.print("bearoff = " + y + "\n");
 		}
 	}
 

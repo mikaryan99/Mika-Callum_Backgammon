@@ -35,7 +35,7 @@ public class User {
 	}
 
 	public void addBearoff() {
-		bearoff++;
+		bearoff = bearoff+1;
 	}
 
 	public int getBearoff() {
