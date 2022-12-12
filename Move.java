@@ -191,7 +191,7 @@ public class Move{
 
 			if(player == 0) {
 
-				if(board.getSet()[yco-1][xco] != " ") {
+				if(board.getSet()[yco+1][xco] != " ") {
 					board.getSet()[checkers.topchecker(25, 1)[0]-1][8] = "o";
 				}
 
@@ -236,11 +236,8 @@ public class Move{
 		    }
 		}
 		else {
-			//int x = users[player].getBearoff();
-			//System.out.print("bearoff = " + x);
+
 			users[player].addBearoff();
-			//int y = users[player].getBearoff();
-			//System.out.print("bearoff = " + y + "\n");
 		}
 	}
 
