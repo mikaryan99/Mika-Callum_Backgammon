@@ -214,7 +214,7 @@ public class Move{
 			}
 			else {
 
-				if(board.getSet()[yco+1][xco] != " ") {
+				if(board.getSet()[yco-1][xco] != " ") {
 					board.getSet()[checkers.topchecker(25, 0)[0]+1][8] = "x";
 				}
 
