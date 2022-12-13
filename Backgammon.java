@@ -1,9 +1,11 @@
 package Backgammon;
 import java.util.Scanner;
-
+import java.io.FileInputStream;
+import java.io.IOException;
 
 public class Backgammon {
-	public static void main (String[] args) {
+	public static void main (String[] args) throws IOException
+	{
 
 		View view = new View();
 		User[] users = new User[2];
@@ -20,10 +22,20 @@ public class Backgammon {
 
 		int playerA, playerB;
 
+		//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+		System.out.println("Enter Match Length: ");
+		Scanner sc=new Scanner(System.in);  
+		int len = sc.nextInt();
+		System.out.println("The Length of the Match is : " + len);
+		final String FILE_NAME = "Player1.txt";
+		Scanner scnr = new Scanner(new FileInputStream(FILE_NAME));
+		//!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
+		
 		String input1, input2;
 		//board.printBoard();
 		int roll1, roll2;
 
+		
 		roll1 = dice.getRoll();
 		roll2 = dice.getRoll();
 
@@ -44,11 +56,28 @@ public class Backgammon {
 			///////////////////////////////////////////////////
 			checkers.UpdatePos();
 
-			System.out.print("Current Player: " + users[playerA].toString() + "\n");
+			System.out.println("Current Player: " + users[playerA].toString());
 			board.printBoard(0);
 			do {
-			input1 = view.getCommand(users[playerA]);
-
+					
+					if(users[playerA].getReadNext()) {
+						input1 = "test Player1.txt";
+					}
+					else {
+						input1 = view.getCommand(users[playerA]);
+					}
+					
+				if("test Player1.txt".equalsIgnoreCase(input1)) {
+					input1=scnr.nextLine();
+					if(scnr.hasNext()) {
+						users[playerA].readNextLineT();
+					}
+					else {
+						users[playerA].readNextLineF();
+					}
+				}
+				
+				
 			if("pip".equalsIgnoreCase(input1)) {
 				checkers.getPipCount();
 				checkers.duplicates(0);
@@ -182,12 +211,30 @@ public class Backgammon {
 			/////////////////////////PLAYER TWO////////////////////////////
 
 			checkers.UpdatePos();
-			System.out.print("Current Player: " + users[playerB].toString() + "\n");
+			System.out.println("Current Player: " + users[playerB].toString());
 			board.printBoard(1);
 			do {
 				checkers.UpdatePos();
 
-			input2 = view.getCommand(users[playerB]);
+			//input2 = view.getCommand(users[playerB]);
+				
+				if(users[playerB].getReadNext()) {
+					input2 = "test Player1.txt";
+				}
+				else {
+					input2 = view.getCommand(users[playerB]);
+				}
+				
+			if("test Player1.txt".equalsIgnoreCase(input2)) {
+				input2=scnr.nextLine();
+				if(scnr.hasNext()) {
+					users[playerB].readNextLineT();
+				}
+				else {
+					users[playerB].readNextLineF();
+				}
+			}
+				
 			if("pip".equalsIgnoreCase(input2)) {
 				checkers.getPipCount();
 				//checkers.duplicates(1);
@@ -287,7 +334,7 @@ public class Backgammon {
 				}
 				break;
 			}
-		checkers.UpdatePos();
+			checkers.UpdatePos();
 			if("Q".equalsIgnoreCase(input2)) {
 				users[playerB].EndGame();
 			}
@@ -304,10 +351,40 @@ public class Backgammon {
 			///////////////////////////////////////////////////////////////
 
 		}
-		while(!users[playerA].isGameOver() && !users[playerB].isGameOver());
+		while(!users[playerA].isGameOver() && !users[playerB].isGameOver() && users[playerA].getBearoff()<15 && users[playerA].getBearoff()<15);
 
+		
+		//!!!!!!!!!!!!!!!!!!!!!!!!1
+		if(users[playerA].getBearoff()==15) {
+			System.out.println( users[playerA].toString () + "wins");
+			if(users[playerB].getBearoff()==0) {
+				System.out.println("Game ended in a gammon");
+			}
+			else if(users[playerB].getBearoff()>0 && users[playerB].getBearoff()<15) {
+				System.out.println("Game ended in a single");
+			}
+			else {
+				System.out.println("Game ended in a backgammon");
+			}
+		}
+		else if(users[playerB].getBearoff()==15){
+			System.out.println( users[playerB].toString () + "wins");
+			if(users[playerA].getBearoff()==0) {
+				System.out.println("Game ended in a gammon");
+			}
+			else if(users[playerA].getBearoff()>0 && users[playerA].getBearoff()<15) {
+				System.out.println("Game ended in a single");
+			}
+			else {
+				System.out.println("Game ended in a backgammon");
+			}
+		}else {
+			System.out.println("Game is unfinished");
+		}
+
+		//!!!!!!!!!!!!!!!!!!!!!!!!!
+
+		
 		System.out.println("Game Over!");
 	}
-
-
 }

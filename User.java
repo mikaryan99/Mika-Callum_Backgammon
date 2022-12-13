@@ -6,14 +6,18 @@ public class User {
 	private int roll;
 	private boolean X;
 	private int bearoff;
+	private boolean readnext;
+
 
 	User (String name) {
 		this.name = name;
 		roll = 1;
 		X = false;
 		bearoff = 0;
+		readnext=false;
 	}
 
+	
 	public Boolean isGameOver() {
 		return X;
 	}
@@ -40,6 +44,16 @@ public class User {
 
 	public int getBearoff() {
 		return bearoff;
+	}
+	
+	public void readNextLineT() {
+		readnext=true;
+	}
+	public void readNextLineF() {
+		readnext=false;
+	}
+	public boolean getReadNext() {
+		return readnext;
 	}
 
 
