@@ -17,8 +17,8 @@ public class Board {
 				  }
 				}
 
-
-        set[0][17] = "score";
+			
+        set[0][17] = "score: " ;
 		set[8][17] = "x =";
 		//String convertedstring=Integer.toString(users[0].getBearoff());
 		//set[9][17] = convertedstring;
@@ -51,6 +51,8 @@ public class Board {
 		set[12][17] = convertedstring2;
 
 		if(turn == 0) {
+			String S = "Score: ";
+			set[0][17] = S.concat(Integer.toString(users[0].getscore()));
 			for(int i = 13, x = 1; i<=24; i++, x++) {
 				 String s = Integer.toString(i);
 				 if(x==7 | x==8 | x==9) {
@@ -72,6 +74,8 @@ public class Board {
 			set[0][8] = "25";
 		}
 		else {
+			String S = "Score: ";
+			set[0][17] = S.concat(Integer.toString(users[1].getscore()));
 			for(int i = 12, x = 1; i>0; i--, x++) {
 				 String s = Integer.toString(i);
 				 if(x==7 | x==8 | x==9) {

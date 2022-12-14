@@ -7,7 +7,7 @@ public class User {
 	private boolean X;
 	private int bearoff;
 	private boolean readnext;
-
+	private int score;
 
 	User (String name) {
 		this.name = name;
@@ -15,6 +15,7 @@ public class User {
 		X = false;
 		bearoff = 0;
 		readnext=false;
+		score=0;
 	}
 
 	
@@ -54,6 +55,12 @@ public class User {
 	}
 	public boolean getReadNext() {
 		return readnext;
+	}
+	public int getscore() {
+		return score;
+	}
+	public void scoreadd(int x) {
+		score=score+x;
 	}
 
 

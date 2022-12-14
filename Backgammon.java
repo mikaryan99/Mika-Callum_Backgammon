@@ -26,10 +26,13 @@ public class Backgammon {
 		System.out.println("Enter Match Length: ");
 		Scanner sc=new Scanner(System.in);  
 		int len = sc.nextInt();
+		int matchlength=len;
 		System.out.println("The Length of the Match is : " + len);
 		final String FILE_NAME = "Player1.txt";
 		Scanner scnr = new Scanner(new FileInputStream(FILE_NAME));
 		//!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
+		
+		do {
 		
 		String input1, input2;
 		//board.printBoard();
@@ -56,7 +59,7 @@ public class Backgammon {
 			///////////////////////////////////////////////////
 			checkers.UpdatePos();
 
-			System.out.println("Current Player: " + users[playerA].toString());
+			System.out.println("Current Player: " + users[playerA].toString() + "Match Length: " + matchlength);
 			board.printBoard(0);
 			do {
 					
@@ -190,11 +193,14 @@ public class Backgammon {
 
 
 				//////////////////////////*************************///////////////////////////////////
-			System.out.print("\n");
-
+			if("startnew".equalsIgnoreCase(input1)) {
+				users[playerA].EndGame();
+			}
 
 			if("Q".equalsIgnoreCase(input1)) {
-				users[playerA].EndGame();
+				//users[playerA].EndGame();
+				System.out.println("Program Terminated");
+				System.exit(0);
 			}
 			if("hint".equalsIgnoreCase(input1)) {
 				System.out.print("To show pip count of both players enter: pip \n");
@@ -206,12 +212,12 @@ public class Backgammon {
 			}
 			}
 
-			while(!"r".equalsIgnoreCase(input1) && !"Q".equalsIgnoreCase(input1));
+			while(!"r".equalsIgnoreCase(input1) && !"startnew".equalsIgnoreCase(input1));
 
 			/////////////////////////PLAYER TWO////////////////////////////
 
 			checkers.UpdatePos();
-			System.out.println("Current Player: " + users[playerB].toString());
+			System.out.println("Current Player: " + users[playerB].toString() + "Match Length: " + matchlength);
 			board.printBoard(1);
 			do {
 				checkers.UpdatePos();
@@ -335,8 +341,14 @@ public class Backgammon {
 				break;
 			}
 			checkers.UpdatePos();
-			if("Q".equalsIgnoreCase(input2)) {
+			
+			if("startnew".equalsIgnoreCase(input2)) {
 				users[playerB].EndGame();
+			}
+			if("Q".equalsIgnoreCase(input2)) {
+				//users[playerB].EndGame();
+				System.out.println("Program Terminated");
+				System.exit(0);
 			}
 			if(!"r".equalsIgnoreCase(input2) && !"Q".equalsIgnoreCase(input2) && !"pip".equalsIgnoreCase(input2) && !"hint".equalsIgnoreCase(input2) && !"dice".equalsIgnoreCase(input2)) {
 				System.out.print("Invalid Command, Try again\n");
@@ -347,7 +359,7 @@ public class Backgammon {
 				System.out.print("To roll dice enter: r \n");
 			}
 			}
-			while(!"r".equalsIgnoreCase(input2) && !"Q".equalsIgnoreCase(input2));
+			while(!"r".equalsIgnoreCase(input2) && !"startnew".equalsIgnoreCase(input2));
 			///////////////////////////////////////////////////////////////
 
 		}
@@ -378,13 +390,12 @@ public class Backgammon {
 			else {
 				System.out.println("Game ended in a backgammon");
 			}
-		}else {
-			System.out.println("Game is unfinished");
 		}
-
+		len--;
+	}while(len>0);
 		//!!!!!!!!!!!!!!!!!!!!!!!!!
 
 		
 		System.out.println("Game Over!");
-	}
+	}//marks end of a match
 }
