@@ -28,21 +28,16 @@ public class View {
 
 	public int getInt(User user) {
 		System.out.print(user + " enter an integer: ");
-		int number = in.nextInt();
-		// if not int give error *************************************************8
-		return number;
+		String number = in.nextLine();
+		int num=0;
+		try {
+		    num = Integer.parseInt(number);
+		} catch (NumberFormatException e) {
+		    System.out.println("This is not a valid integer");
+		}
+		return num;
 
 	}
-
-	/*public String getABC(User user) {
-		System.out.print(user + " enter A B or C: ");
-		//in.nextLine();
-		String ABC = in.nextLine();
-		// if not int give error
-		return ABC;
-
-	}*/
-
 
 
 
