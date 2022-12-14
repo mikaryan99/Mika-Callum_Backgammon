@@ -191,11 +191,11 @@ public class Move{
 
 			if(player == 0) {
 
-				if(board.getSet()[yco+1][xco] != " ") {
-					board.getSet()[checkers.topchecker(25, 1)[0]-1][8] = "o";
-				}
-
 				if(moveto>12) {
+
+					if(board.getSet()[yco+1][xco] != " ") {
+						board.getSet()[checkers.topchecker(25, 1)[0]-1][8] = "o";
+					}
 					/*if(board.getSet()[yco+1][xco] != " ") {
 						board.getSet()[21-centreO][8] = "o";
 						//centreO++;
@@ -204,6 +204,10 @@ public class Move{
 					//System.out.println("ITS WORKING SORTA");
 				}
 				else {
+
+					if(board.getSet()[yco-1][xco] != " ") {
+						board.getSet()[checkers.topchecker(25, 1)[0]+1][8] = "o";
+					}
 					/*if(board.getSet()[yco-1][xco] != " ") {
 						board.getSet()[21-centreO][8] = "o";
 						centreO++;
@@ -214,11 +218,11 @@ public class Move{
 			}
 			else {
 
-				if(board.getSet()[yco-1][xco] != " ") {
-					board.getSet()[checkers.topchecker(25, 0)[0]+1][8] = "x";
-				}
-
 				if(moveto>12) {
+
+					if(board.getSet()[yco-1][xco] != " ") {
+						board.getSet()[checkers.topchecker(25, 1)[0]+1][8] = "x";
+					}
 					/*if(board.getSet()[yco-1][xco] != " ") {
 						board.getSet()[2+centreX][8] = "x";
 						centreX++;
@@ -226,6 +230,10 @@ public class Move{
 					board.getSet()[yco-1][xco] = "o"; //top half
 					}
 				else {
+
+					if(board.getSet()[yco+1][xco] != " ") {
+						board.getSet()[checkers.topchecker(25, 1)[0]-1][8] = "x";
+					}
 					/*if(board.getSet()[yco+1][xco] != " ") {
 						board.getSet()[2+centreX][8] = "x";
 						centreX++;
