@@ -17,7 +17,6 @@ public class User {
 		readnext=false;
 		score=0;
 	}
-
 	
 	public Boolean isGameOver() {
 		return X;
@@ -25,6 +24,10 @@ public class User {
 
 	public void EndGame() {
 		X = true;
+	}
+	
+	public void nEndGame() {
+		X = false;
 	}
 
 	public void move(int roll) {

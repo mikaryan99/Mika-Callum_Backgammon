@@ -27,7 +27,7 @@ public class View {
 
 
 	public int getInt(User user) {
-		System.out.print(user + " enter an integer: ");
+		System.out.println(user + " enter an integer: ");
 		String number = in.nextLine();
 		int num=0;
 		try {

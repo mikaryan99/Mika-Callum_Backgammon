@@ -50,7 +50,8 @@ public class Backgammon {
 		playerA = dice.getTurn(roll1, roll2)[0];
 		playerB = dice.getTurn(roll1, roll2)[1];
 		System.out.print(users[dice.getTurn(roll1, roll2)[0]] + " goes first \n");
-
+		users[playerA].nEndGame();
+		users[playerB].nEndGame();
 		//
 		//
 
@@ -363,7 +364,7 @@ public class Backgammon {
 			///////////////////////////////////////////////////////////////
 
 		}
-		while(!users[playerA].isGameOver() && !users[playerB].isGameOver() && users[playerA].getBearoff()<15 && users[playerA].getBearoff()<15);
+		while(!users[playerA].isGameOver() && !users[playerB].isGameOver() && users[playerA].getBearoff()<15 && users[playerB].getBearoff()<15);
 
 		
 		//!!!!!!!!!!!!!!!!!!!!!!!!1
@@ -371,6 +372,7 @@ public class Backgammon {
 			System.out.println( users[playerA].toString () + "wins");
 			if(users[playerB].getBearoff()==0) {
 				System.out.println("Game ended in a gammon");
+				
 			}
 			else if(users[playerB].getBearoff()>0 && users[playerB].getBearoff()<15) {
 				System.out.println("Game ended in a single");
