@@ -18,7 +18,7 @@ public class User {
 		score=0;
 	}
 
-	
+
 	public Boolean isGameOver() {
 		return X;
 	}
@@ -46,7 +46,7 @@ public class User {
 	public int getBearoff() {
 		return bearoff;
 	}
-	
+
 	public void readNextLineT() {
 		readnext=true;
 	}

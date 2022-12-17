@@ -17,7 +17,7 @@ public class Board {
 				  }
 				}
 
-			
+
         set[0][17] = "score: " ;
 		set[8][17] = "x =";
 		//String convertedstring=Integer.toString(users[0].getBearoff());
@@ -26,7 +26,7 @@ public class Board {
 		//String convertedstring2=Integer.toString(users[1].getBearoff());
 		//set[12][17] = convertedstring2;
 
-		
+
 		for(int y = 1; y< MatrixY-1; y++) {
 			set[y][0]  = "|";
 			set[y][7]  = "|";
@@ -115,13 +115,13 @@ public class Board {
 	public boolean correctPosition(int choice, int[] positions) {
 		boolean found = false;
 		for (int i : positions) {
-			//System.out.print(i + "This should be positions \n");
+			//System.out.println(i + "This should be positions \n");
 			if (choice == i) {
-				//System.out.print("Choice is found" + choice);
+				//System.out.println("Choice is found" + choice);
 				found = true;
 			}
 		}
-		// BUGGING System.out.print(found);
+		// BUGGING System.out.println(found);
 		return found;
 	}
 
