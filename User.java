@@ -27,6 +27,10 @@ public class User {
 		X = true;
 	}
 
+	public void setEndGame() {
+		X = false;
+	}
+
 	public void move(int roll) {
 		this.roll = roll;
 	}
@@ -45,6 +49,10 @@ public class User {
 
 	public int getBearoff() {
 		return bearoff;
+	}
+
+	public void resetBear() {
+		bearoff = 0;
 	}
 
 	public void readNextLineT() {

@@ -15,15 +15,11 @@ public class Backgammon {
 
 		int playerA, playerB;
 
-		//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-		System.out.println("Enter Match Length: ");
-		Scanner sc=new Scanner(System.in);
-		int len = sc.nextInt();
-		int matchlength=len;
-		System.out.println("The Length of the Match is : " + len);
+		int matchlength = view.getLength();
+
 		final String FILE_NAME = "Player1.txt";
 		Scanner scnr = new Scanner(new FileInputStream(FILE_NAME));
-		//!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
+
 
 		do {
 
@@ -33,7 +29,7 @@ public class Backgammon {
 		Move move = new Move(users, board, checkers);
 
 		String input1, input2;
-		//board.printBoard();
+
 		int roll1, roll2;
 
 
@@ -48,6 +44,8 @@ public class Backgammon {
 		playerA = dice.getTurn(roll1, roll2)[0];
 		playerB = dice.getTurn(roll1, roll2)[1];
 		System.out.println(users[dice.getTurn(roll1, roll2)[0]] + " goes first \n");
+		users[playerA].setEndGame();
+		users[playerB].setEndGame();
 
 		//
 		//
@@ -104,7 +102,7 @@ public class Backgammon {
 				int choice = view.getInt(users[playerA]);
 				boolean found = board.correctPosition(choice,checkers.positions(0));
 				int moveto = move.legalMoves(checkers.duplicates(0),choice , found, roll1, roll2, 0);
-/*  */			move.movetoSet(moveto);
+/*  */			//move.movetoSet(moveto);
 
                 if(moveto == 26) {
     				move.makemove(0);
@@ -126,12 +124,11 @@ public class Backgammon {
 					board.printBoard(0);
 
 					checkers.duplicates(0);
-					int choice2 = view.getInt(users[playerA]);
+					int choice2 = view.getInt(users[playerA]); //pA
 					boolean found2 = board.correctPosition(choice2,checkers.positions(0));
-					//error? below
 
 					int moveto2 = move.legalMoves(checkers.duplicates(0),choice2 , found2, 0, roll2, 0);
-					move.movetoSet(moveto2);
+					//move.movetoSet(moveto2);
 
 					if(moveto2 > 0) { // this is new
 					move.makemove(0);
@@ -160,9 +157,9 @@ public class Backgammon {
 					boolean found2 = board.correctPosition(choice2,checkers.positions(0));
 
 					int moveto2 = move.legalMoves(checkers.duplicates(0),choice2 , found2, roll1, 0, 0);
-					move.movetoSet(moveto2);
+					//move.movetoSet(moveto2);
 
-					if(moveto2 > 0) { // this is new
+					if(moveto2 > 0) {
 					move.makemove(0);
 					int yco2 = checkers.topchecker(choice2, 0)[0];
 					int xco2 = checkers.topchecker(choice2, 0)[1];
@@ -176,7 +173,7 @@ public class Backgammon {
 
 					break;
 				}
-			checkers.UpdatePos();
+
 				if(moveto == choice-roll1-roll2 && moveto != 0) {
 					move.makemove(0);
 					int yco = checkers.topchecker(choice, 0)[0];
@@ -204,6 +201,8 @@ public class Backgammon {
 				System.out.println("To show pip count of both players enter: pip \n");
 				System.out.println("To quit the game enter: Q \n");
 				System.out.println("To roll dice enter: r \n");
+				System.out.println("To start new game enter: startnew \n");
+				System.out.println("To set dice roll enter: \n dice \n integer integer \n");
 			}
 			if(!"r".equalsIgnoreCase(input1) && !"Q".equalsIgnoreCase(input1) && !"pip".equalsIgnoreCase(input1) && !"dice".equalsIgnoreCase(input1) && !"hint".equalsIgnoreCase(input1)) {
 				System.out.println("Invalid Command, Try again\n");
@@ -259,7 +258,7 @@ public class Backgammon {
 				int choice = view.getInt(users[playerB]);
 				boolean found = board.correctPosition(choice,checkers.positions(1));
 				int moveto = move.legalMoves(checkers.duplicates(1),choice , found, roll1, roll2, 1);
-				move.movetoSet(moveto);
+			//	move.movetoSet(moveto);
 
 
                 if(moveto == 26) {
@@ -284,7 +283,7 @@ public class Backgammon {
 					int choice2 = view.getInt(users[playerB]);
 					boolean found2 = board.correctPosition(choice2,checkers.positions(1));
 					int moveto2 = move.legalMoves(checkers.duplicates(1),choice2 , found2, 0, roll2, 1);
-					move.movetoSet(moveto2);
+					//move.movetoSet(moveto2);
 
 					if(moveto2 != 0) { // this is new
 					move.makemove(1);
@@ -312,7 +311,7 @@ public class Backgammon {
 					int choice2 = view.getInt(users[playerB]);
 					boolean found2 = board.correctPosition(choice2,checkers.positions(1));
 					int moveto2 = move.legalMoves(checkers.duplicates(1),choice2 , found2, roll1, 0, 1);
-/* ****** */		move.movetoSet(moveto2);  // this function could be wrong and bypassing error checks from legal ??
+/* ****** */		//move.movetoSet(moveto2);  // this function could be wrong and bypassing error checks from legal ??
 
 
 					if(moveto2 != 0) { // this is new
@@ -355,6 +354,8 @@ public class Backgammon {
 				System.out.println("To show pip count of both players enter: pip \n");
 				System.out.println("To quit the game enter: Q \n");
 				System.out.println("To roll dice enter: r \n");
+				System.out.println("To start new game enter: startnew \n");
+				System.out.println("To set dice roll enter: \n dice \n integer integer \n");
 			}
 			}
 			while(!"r".equalsIgnoreCase(input2) && !"startnew".equalsIgnoreCase(input2));
@@ -398,11 +399,17 @@ public class Backgammon {
 				users[playerB].scoreadd(3);
 			}
 		}
-		len--;
-	}while(len>0);
+		matchlength--;
+	}while(matchlength>0);
 		//!!!!!!!!!!!!!!!!!!!!!!!!!
 
+		if(users[playerA].getscore()>users[playerB].getscore()) {
+			System.out.println("Match Over!" + users[playerA].toString() +" wins!" );
+		}
+		else {
+			System.out.println("Match Over! \n" + users[playerB].toString() +" wins!" );
+		}
 
-		System.out.println("Game Over!");
+
 	}//marks end of a match
 }

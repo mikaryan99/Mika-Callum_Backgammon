@@ -51,12 +51,7 @@ public class View {
 
 	public int[] getDice() {
 
-		//int[] numbers = new int[2];
 		String[] number = new String[2];
-	    //String s = in.next();
-
-	   // numbers[0] = in.nextInt();
-	  //  numbers[1] = in.nextInt();
 
 	    number[0] = in.next();
 	    number[1] = in.next();
@@ -73,6 +68,20 @@ public class View {
 
 
 	     return num;
+	}
+
+	public int getLength() {
+		System.out.println("Enter Match Length: ");
+
+		String len = in.nextLine();
+		int matchlength=0;
+		try {
+			matchlength = Integer.parseInt(len);
+		} catch (NumberFormatException e) {
+		    System.out.println("This is not a valid integer");
+		}
+		System.out.println("The Length of the Match is : " + matchlength);
+		return matchlength;
 	}
 
 
