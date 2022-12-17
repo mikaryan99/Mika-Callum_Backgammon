@@ -361,38 +361,41 @@ public class Backgammon {
 			///////////////////////////////////////////////////////////////
 
 		}
-		while(!users[playerA].isGameOver() && !users[playerB].isGameOver() && users[0].getBearoff()<15 && users[1].getBearoff()<15);
+		while(!users[playerA].isGameOver() && !users[playerB].isGameOver() && users[playerA].getBearoff()<15 && users[playerB].getBearoff()<15);
+
+		users[playerA].resetBear();
+		users[playerB].resetBear();
 
 
 		//!!!!!!!!!!!!!!!!!!!!!!!!1
-		if(users[0].getBearoff()==15) {
+		if(users[playerA].getBearoff()==15) {
 			System.out.println( users[playerA].toString () + "wins");
-			if(users[1].getBearoff()==0) {
+			if(users[playerB].getBearoff()==0) {
 				System.out.println("Game ended in a gammon");
-				users[0].scoreadd(2);
+				users[playerA].scoreadd(2);
 			}
-			else if(users[1].getBearoff()>0 && users[1].getBearoff()<15) {
+			else if(users[1].getBearoff()>0 && users[playerB].getBearoff()<15) {
 				System.out.println("Game ended in a single");
-				users[0].scoreadd(1);
+				users[playerA].scoreadd(1);
 			}
 			else {
 				System.out.println("Game ended in a backgammon");
-				users[0].scoreadd(3);
+				users[playerA].scoreadd(3);
 			}
 		}
 		else if(users[1].getBearoff()==15){
 			System.out.println( users[playerB].toString () + "wins");
 			if(users[playerA].getBearoff()==0) {
 				System.out.println("Game ended in a gammon");
-				users[1].scoreadd(2);
+				users[playerB].scoreadd(2);
 			}
-			else if(users[0].getBearoff()>0 && users[0].getBearoff()<15) {
+			else if(users[playerA].getBearoff()>0 && users[playerA].getBearoff()<15) {
 				System.out.println("Game ended in a single");
-				users[1].scoreadd(1);
+				users[playerB].scoreadd(1);
 			}
 			else {
 				System.out.println("Game ended in a backgammon");
-				users[1].scoreadd(3);
+				users[playerB].scoreadd(3);
 			}
 		}
 		len--;
