@@ -93,21 +93,21 @@ public class Move{
 			}
 
 			if(Avalid && Bvalid && Cvalid) {
-				System.out.print("Legal move options are: \n A =  " + A + "\n B = " + B + "\n C = " + C );
+				System.out.println("Legal move options are: \n A =  " + A + "\n B = " + B + "\n C = " + C );
 			}
 			if(!Avalid && Bvalid && Cvalid) {
-				System.out.print("Legal move options are: \n B =  " + B + "\n C = " + C );
+				System.out.println("Legal move options are: \n B =  " + B + "\n C = " + C );
 			}
 			if(Avalid && !Bvalid && Cvalid) {
-				System.out.print("Legal move options are: \n A =  " + A + "\n C = " + C );
+				System.out.println("Legal move options are: \n A =  " + A + "\n C = " + C );
 			}
 			if(Avalid && Bvalid && !Cvalid) {
-				System.out.print("Legal move options are: \n A =  " + A + "\n B = " + B );
+				System.out.println("Legal move options are: \n A =  " + A + "\n B = " + B );
 			}
 			if(Avalid && !Bvalid && !Cvalid) {
-				System.out.print("Legal move options are: \n A =  " + A + "\n");
+				System.out.println("Legal move options are: \n A =  " + A + "\n");
 				skip = true;
-				System.out.print("A was selected\n");
+				System.out.println("A was selected\n");
 				moveto = A;//make move A
 				//update checkers
 				//get another integer
@@ -115,9 +115,9 @@ public class Move{
 				//update checkers
 			}
 			if(!Avalid && Bvalid && !Cvalid) {
-				System.out.print("Legal move options are: " + "\n B = " + B + "\n");
+				System.out.println("Legal move options are: " + "\n B = " + B + "\n");
 				skip = true;
-				System.out.print("B was selected\n");
+				System.out.println("B was selected\n");
 				moveto = B;//make move B
 				//update checkers
 				//get another integer
@@ -125,16 +125,16 @@ public class Move{
 				//update checkers
 			}
 			if(!Avalid && !Bvalid && Cvalid) {
-				System.out.print("Legal move options are: " + "\n C = " + C + "\n");
+				System.out.println("Legal move options are: " + "\n C = " + C + "\n");
 				skip = true;
-				System.out.print("C was selected\n");
+				System.out.println("C was selected\n");
 				moveto = C;//make move C
 				//update checkers
 				//break
 			}
 			////TEST
 			if(!Avalid && !Bvalid && !Cvalid) {
-				System.out.print("No Moves Available, Next Player \n");
+				System.out.println("No Moves Available, Next Player \n");
 				skip = true;
 				//break
 			}
@@ -144,7 +144,7 @@ public class Move{
 			String ABC1 = view.getABC();
 
 			if("A".equalsIgnoreCase(ABC1)) {
-				System.out.print("A was selected\n");
+				System.out.println("A was selected\n");
 				moveto = A;//make move A
 				//update checkers
 				//get another integer
@@ -152,7 +152,7 @@ public class Move{
 				//update checkers
 			}
 			if("B".equalsIgnoreCase(ABC1)) {
-				System.out.print("B was selected\n");
+				System.out.println("B was selected\n");
 					moveto = B;//make move B
 					//update checkers
 					//get another integer
@@ -160,7 +160,7 @@ public class Move{
 					//update checkers
 			}
 			if("C".equalsIgnoreCase(ABC1)) {
-				System.out.print("C was selected\n");
+				System.out.println("C was selected\n");
 						moveto = C;//make move C
 						//update checkers
 						//break
@@ -206,7 +206,7 @@ public class Move{
 				else {
 
 					if(board.getSet()[yco-1][xco] != " ") {
-						board.getSet()[checkers.topchecker(25, 1)[0]+1][8] = "o";
+						board.getSet()[checkers.topchecker(25, 1)[0]-1][8] = "o";
 					}
 					/*if(board.getSet()[yco-1][xco] != " ") {
 						board.getSet()[21-centreO][8] = "o";
@@ -221,7 +221,7 @@ public class Move{
 				if(moveto>12) {
 
 					if(board.getSet()[yco-1][xco] != " ") {
-						board.getSet()[checkers.topchecker(25, 1)[0]+1][8] = "x";
+						board.getSet()[checkers.topchecker(25, 0)[0]+1][8] = "x";
 					}
 					/*if(board.getSet()[yco-1][xco] != " ") {
 						board.getSet()[2+centreX][8] = "x";
@@ -232,7 +232,7 @@ public class Move{
 				else {
 
 					if(board.getSet()[yco+1][xco] != " ") {
-						board.getSet()[checkers.topchecker(25, 1)[0]-1][8] = "x";
+						board.getSet()[checkers.topchecker(25, 0)[0]+1][8] = "x";
 					}
 					/*if(board.getSet()[yco+1][xco] != " ") {
 						board.getSet()[2+centreX][8] = "x";

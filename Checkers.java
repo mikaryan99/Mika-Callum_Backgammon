@@ -105,8 +105,8 @@ public class Checkers {
 		    		}
 			}
 		}
-		//System.out.print("O = " + OintermsX + "\n");
-		//System.out.print("X = " + XintermsO + "\n");
+		//System.out.println("O = " + OintermsX + "\n");
+		//System.out.println("X = " + XintermsO + "\n");
 	}
 
 
@@ -120,8 +120,8 @@ public class Checkers {
 			TotalO = TotalO + Ocheckers.get(i);
 		}
 
-		System.out.print("x pip count: " + TotalX + "\n"); //******************************
-		System.out.print("o pip count: " + TotalO + "\n");
+		System.out.println("x pip count: " + TotalX + "\n"); //******************************
+		System.out.println("o pip count: " + TotalO + "\n");
 	}
 
 
@@ -195,7 +195,7 @@ public class Checkers {
 
 		int xco,yco = 0;
 		xco = matrix[choice-1];
-		//System.out.print("xco = " + xco + "\n");
+		//System.out.println("xco = " + xco + "\n");
 
 		if(player == 0) {
 			if(choice>12) {
@@ -240,7 +240,7 @@ public class Checkers {
 		}
 
 		int[] coordinates = {yco,xco};
-		//System.out.print("yco = " + yco + "\n");
+		//System.out.println("yco = " + yco + "\n");
 
 		return coordinates;
 	}

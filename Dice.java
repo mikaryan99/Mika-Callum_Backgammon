@@ -14,7 +14,7 @@ public class Dice {
 		int[] turns = new int[2];
 
 		if(roll1 > roll2) {
-			//System.out.print(users[0] + " goes first \n");
+			//System.out.println(users[0] + " goes first \n");
 			turns[0] = 0;
 			turns[1] = 1;
 			return turns;
@@ -25,7 +25,7 @@ public class Dice {
 			turns[0] = 1;
 			turns[1] = 0;
 			return turns;
-			/*System.out.print(users[1] + " goes first \n");
+			/*System.out.println(users[1] + " goes first \n");
 			playerB = 0;
 			playerA = 1;*/
 		}
