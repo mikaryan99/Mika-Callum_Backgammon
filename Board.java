@@ -20,12 +20,8 @@ public class Board {
 
         set[0][17] = "score: " ;
 		set[8][17] = "x =";
-		//String convertedstring=Integer.toString(users[0].getBearoff());
-		//set[9][17] = convertedstring;
-		set[11][17] = "o =";
-		//String convertedstring2=Integer.toString(users[1].getBearoff());
-		//set[12][17] = convertedstring2;
 
+		set[11][17] = "o =";
 
 		for(int y = 1; y< MatrixY-1; y++) {
 			set[y][0]  = "|";
@@ -115,9 +111,7 @@ public class Board {
 	public boolean correctPosition(int choice, int[] positions) {
 		boolean found = false;
 		for (int i : positions) {
-			//System.out.println(i + "This should be positions \n");
 			if (choice == i) {
-				//System.out.println("Choice is found" + choice);
 				found = true;
 			}
 		}
@@ -128,3 +122,4 @@ public class Board {
 
 
 }
+s

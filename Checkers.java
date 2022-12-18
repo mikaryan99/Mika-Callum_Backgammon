@@ -105,11 +105,11 @@ public class Checkers {
 		    		}
 			}
 		}
-		//System.out.println("O = " + OintermsX + "\n");
-		//System.out.println("X = " + XintermsO + "\n");
+
 	}
 
 
+	/* finds the location of all of one players pips and returns an arraylist containing their locations  */
 	public void getPipCount() {
 
 		int TotalO=0, TotalX=0;
@@ -120,7 +120,7 @@ public class Checkers {
 			TotalO = TotalO + Ocheckers.get(i);
 		}
 
-		System.out.println("x pip count: " + TotalX + "\n"); //******************************
+		System.out.println("x pip count: " + TotalX + "\n");
 		System.out.println("o pip count: " + TotalO + "\n");
 	}
 
@@ -171,31 +171,27 @@ public class Checkers {
 		Set<Integer> duplicates = new HashSet<Integer>();
 
 		for(int i = 0; i < TEST.size(); i++) {
-			//positions.add(TEST.get(i));
             if(positions.add(TEST.get(i)) == false)
             	duplicates.add(TEST.get(i));
-                //System.out.println(TEST.get(i) + "is duplicated");
         }
 
-		//Turns duplicates into an int array
 		Object[] objduplicates = duplicates.toArray();
 	    int intduplicates[] = new int[objduplicates.length];
 	    for(int i=0; i<objduplicates.length; i++){
 	         intduplicates[i] = (int) objduplicates[i];
-	       // System.out.println(intduplicates[i]);
+
 	      }
 
 		return intduplicates;
 
 	}
 
+	/* finds the top checker in a specified column, returns co-ordinates of top checker in a column(stack)*/
 	public int[] topchecker(int choice, int player){
-
-		//board.printBoard(player);
 
 		int xco,yco = 0;
 		xco = matrix[choice-1];
-		//System.out.println("xco = " + xco + "\n");
+
 
 		if(player == 0) {
 			if(choice>12) {
@@ -240,7 +236,6 @@ public class Checkers {
 		}
 
 		int[] coordinates = {yco,xco};
-		//System.out.println("yco = " + yco + "\n");
 
 		return coordinates;
 	}
