@@ -1,3 +1,8 @@
+// Team Name: group 17
+// Student Names: Callum O'Brien, Mika ryan
+// GitHub ids: callumob1, Mikaryan99
+
+
 package Backgammon;
 import java.util.Scanner;
 import java.io.FileInputStream;

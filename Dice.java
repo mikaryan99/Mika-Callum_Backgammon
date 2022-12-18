@@ -1,3 +1,7 @@
+// Team Name: group 17
+// Student Names: Callum O'Brien, Mika ryan
+// GitHub ids: callumob1, Mikaryan99
+
 package Backgammon;
 
 public class Dice {
